@@ -1,0 +1,480 @@
+
+
+==============================================
+02/07/2024, 19:13:38
+R square of Chlorophyll-a: -13.441018842351722
+Mean squared error of Chlorophyll-a: 123.60225429277331
+R square of P-8.13404377196203
+Mean squared error of P: 6250447.541255892
+R square of K-11.76650153632428
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+02/07/2024, 19:40:16
+Linear Regression
+R square of Chlorophyll-a: -13.441018842351722
+Mean squared error of Chlorophyll-a: 123.60225429277331
+R square of P-8.13404377196203
+Mean squared error of P: 6250447.541255892
+R square of K-11.76650153632428
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+02/07/2024, 19:40:50
+stochastic_grad_descend
+R square of Chlorophyll-a: -5.267151965173717e+30
+Mean squared error of Chlorophyll-a: 4.508212777126062e+31
+R square of P-2.744340391066295e+25
+Mean squared error of P: 1.87795855570166e+31
+R square of K-4.029133784827708e+22
+Mean squared error of K: 4.2718518351733986e+30
+Mean absolute percentage error of Chlorophyll-a: 127255054990704.08
+Mean absolute percentage error of P: 619387155111.0933
+Mean absolute percentage error of K: 44902224236.99212
+
+==============================================
+02/07/2024, 19:42:51
+Linear Regression
+R square of Chlorophyll-a: -13.441018842351722
+Mean squared error of Chlorophyll-a: 123.60225429277331
+R square of P: -8.13404377196203
+Mean squared error of P: 6250447.541255892
+R square of K: -11.76650153632428
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+02/07/2024, 19:43:15
+stochastic_grad_descend
+R square of Chlorophyll-a: -5.267151965173717e+30
+Mean squared error of Chlorophyll-a: 4.508212777126062e+31
+R square of P: -2.744340391066295e+25
+Mean squared error of P: 1.87795855570166e+31
+R square of K: -4.029133784827708e+22
+Mean squared error of K: 4.2718518351733986e+30
+Mean absolute percentage error of Chlorophyll-a: 127255054990704.08
+Mean absolute percentage error of P: 619387155111.0933
+Mean absolute percentage error of K: 44902224236.99212
+
+==============================================
+05/07/2024, 15:00:43
+gradient_boost
+R square of Chlorophyll-a: -0.26726392019736056
+Mean squared error of Chlorophyll-a: 10.846650020351516
+R square of P: -0.14339321994307075
+Mean squared error of P: 782426.6577547481
+R square of K: -0.0588415038760961
+Mean squared error of K: 112262691.26440242
+Mean absolute percentage error of Chlorophyll-a: 0.06219786679803921
+Mean absolute percentage error of P: 0.21017272986556426
+Mean absolute percentage error of K: 0.3147963545934863
+
+==============================================
+05/07/2024, 15:36:46
+elastic_net
+R square of Chlorophyll-a: -0.002307351933966695
+Mean squared error of Chlorophyll-a: 10.041496119218747
+R square of P: 0.07658859767832071
+Mean squared error of P: 662029.8574372085
+R square of K: -0.0300338394587516
+Mean squared error of K: 105147141.22379479
+Mean absolute percentage error of Chlorophyll-a: 0.06211996110972029
+Mean absolute percentage error of P: 0.1617666884656284
+Mean absolute percentage error of K: 0.2520199467696968
+
+==============================================
+05/07/2024, 15:45:52
+elastic_net
+R square of Chlorophyll-a: -0.002307351933966695
+Mean squared error of Chlorophyll-a: 10.041496119218747
+R square of P: 0.07658859767832071
+Mean squared error of P: 662029.8574372085
+R square of K: -0.0300338394587516
+Mean squared error of K: 105147141.22379479
+Mean absolute percentage error of Chlorophyll-a: 0.06211996110972029
+Mean absolute percentage error of P: 0.1617666884656284
+Mean absolute percentage error of K: 0.2520199467696968
+
+==============================================
+08/07/2024, 17:37:17
+Linear Regression
+R square of Chlorophyll-a: -13.441018842351722
+Mean squared error of Chlorophyll-a: 123.60225429277331
+R square of P: -8.13404377196203
+Mean squared error of P: 6250447.541255892
+R square of K: -11.76650153632428
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+15/07/2024, 15:10:17
+Linear Regression
+R square of Chlorophyll-a: -13.441018842351722
+Mean squared error of Chlorophyll-a: 123.60225429277331
+R square of P: -8.13404377196203
+Mean squared error of P: 6250447.541255892
+R square of K: -11.76650153632428
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+15/07/2024, 15:13:21
+Linear Regression
+R square of Chlorophyll-a: -13.441018842351722
+Mean squared error of Chlorophyll-a: 123.60225429277331
+R square of P: -8.13404377196203
+Mean squared error of P: 6250447.541255892
+R square of K: -11.76650153632428
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+15/07/2024, 15:17:59
+Linear Regression
+R square of Chlorophyll-a: -0.16376762454352134
+Mean squared error of Chlorophyll-a: 9.960813945112198
+R square of P: -0.10272456213319647
+Mean squared error of P: 754596.9999864995
+R square of K: -0.06275417848021236
+Mean squared error of K: 112677528.9709827
+Mean absolute percentage error of Chlorophyll-a: 0.059271605386801415
+Mean absolute percentage error of P: 0.2055635429343914
+Mean absolute percentage error of K: 0.30880897229269977
+
+==============================================
+15/07/2024, 15:18:39
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.16376762454370652
+Mean squared error of Chlorophyll-a: 9.960813945113783
+R square of P: -0.10272456213476322
+Mean squared error of P: 754596.9999875716
+R square of K: -0.06275417847984643
+Mean squared error of K: 112677528.9709439
+Mean absolute percentage error of Chlorophyll-a: 0.05927160538689935
+Mean absolute percentage error of P: 0.20556354293461698
+Mean absolute percentage error of K: 0.30880897229267523
+
+==============================================
+15/07/2024, 15:47:12
+gradient_boost PCA
+R square of Chlorophyll-a: -0.09258919371666274
+R square of P: -0.1434874291143513
+R square of K: -0.132471048252228
+Mean squared error of Chlorophyll-a: 9.351589997462447
+Mean squared error of P: 782491.1253112538
+Mean squared error of K: 120069195.61654347
+Mean absolute percentage error of Chlorophyll-a: 0.05776635914514084
+Mean absolute percentage error of P: 0.20736354007933266
+Mean absolute percentage error of K: 0.31973008845956646
+
+==============================================
+22/07/2024, 13:29:16
+Linear Regression
+R square of Chlorophyll-a: -13.441018842351722
+R square of P: -8.13404377196203
+R square of K: -11.76650153632428
+Mean squared error of Chlorophyll-a: 123.60225429277331
+Mean squared error of P: 6250447.541255892
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+22/07/2024, 13:54:36
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.262892660120448
+R square of P: 0.016409466196022682
+R square of K: 0.003776229237767992
+Mean squared error of Chlorophyll-a: 10.809235928900998
+Mean squared error of P: 673073.3054388517
+Mean squared error of K: 105623704.01795891
+Mean absolute percentage error of Chlorophyll-a: 0.05986557714143347
+Mean absolute percentage error of P: 0.1974738693295036
+Mean absolute percentage error of K: 0.2974446251917161
+
+==============================================
+22/07/2024, 13:56:05
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26279770718683704
+R square of P: 0.015332720417509327
+R square of K: 0.003600356760691037
+Mean squared error of Chlorophyll-a: 10.808423216392683
+Mean squared error of P: 673810.1250963757
+Mean squared error of K: 105642350.73469955
+Mean absolute percentage error of Chlorophyll-a: 0.05986070448578407
+Mean absolute percentage error of P: 0.19750589208169203
+Mean absolute percentage error of K: 0.2975277857591836
+
+==============================================
+22/07/2024, 13:57:04
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26346640883563843
+R square of P: 0.014795001931235507
+R square of K: 0.003117324132342336
+Mean squared error of Chlorophyll-a: 10.814146706690938
+Mean squared error of P: 674178.0871156442
+Mean squared error of K: 105693563.82242648
+Mean absolute percentage error of Chlorophyll-a: 0.059863267855440036
+Mean absolute percentage error of P: 0.1975685731381364
+Mean absolute percentage error of K: 0.2975177941020045
+
+==============================================
+22/07/2024, 13:57:04
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26346640883563843
+R square of P: 0.014795001931235507
+R square of K: 0.003117324132342336
+Mean squared error of Chlorophyll-a: 10.814146706690938
+Mean squared error of P: 674178.0871156442
+Mean squared error of K: 105693563.82242648
+Mean absolute percentage error of Chlorophyll-a: 0.059863267855440036
+Mean absolute percentage error of P: 0.1975685731381364
+Mean absolute percentage error of K: 0.2975177941020045
+
+==============================================
+22/07/2024, 13:57:04
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26346640883563843
+R square of P: 0.014795001931235507
+R square of K: 0.003117324132342336
+Mean squared error of Chlorophyll-a: 10.814146706690938
+Mean squared error of P: 674178.0871156442
+Mean squared error of K: 105693563.82242648
+Mean absolute percentage error of Chlorophyll-a: 0.059863267855440036
+Mean absolute percentage error of P: 0.1975685731381364
+Mean absolute percentage error of K: 0.2975177941020045
+
+==============================================
+22/07/2024, 13:57:04
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26346640883563843
+R square of P: 0.014795001931235507
+R square of K: 0.003117324132342336
+Mean squared error of Chlorophyll-a: 10.814146706690938
+Mean squared error of P: 674178.0871156442
+Mean squared error of K: 105693563.82242648
+Mean absolute percentage error of Chlorophyll-a: 0.059863267855440036
+Mean absolute percentage error of P: 0.1975685731381364
+Mean absolute percentage error of K: 0.2975177941020045
+
+==============================================
+22/07/2024, 13:57:04
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26346640883563843
+R square of P: 0.014795001931235507
+R square of K: 0.003117324132342336
+Mean squared error of Chlorophyll-a: 10.814146706690938
+Mean squared error of P: 674178.0871156442
+Mean squared error of K: 105693563.82242648
+Mean absolute percentage error of Chlorophyll-a: 0.059863267855440036
+Mean absolute percentage error of P: 0.1975685731381364
+Mean absolute percentage error of K: 0.2975177941020045
+
+==============================================
+22/07/2024, 13:57:04
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26346640883563843
+R square of P: 0.014795001931235507
+R square of K: 0.003117324132342336
+Mean squared error of Chlorophyll-a: 10.814146706690938
+Mean squared error of P: 674178.0871156442
+Mean squared error of K: 105693563.82242648
+Mean absolute percentage error of Chlorophyll-a: 0.059863267855440036
+Mean absolute percentage error of P: 0.1975685731381364
+Mean absolute percentage error of K: 0.2975177941020045
+
+==============================================
+22/07/2024, 13:57:04
+Linear Regression with PCA
+R square of Chlorophyll-a: -0.26346640883563843
+R square of P: 0.014795001931235507
+R square of K: 0.003117324132342336
+Mean squared error of Chlorophyll-a: 10.814146706690938
+Mean squared error of P: 674178.0871156442
+Mean squared error of K: 105693563.82242648
+Mean absolute percentage error of Chlorophyll-a: 0.059863267855440036
+Mean absolute percentage error of P: 0.1975685731381364
+Mean absolute percentage error of K: 0.2975177941020045
+
+==============================================
+22/07/2024, 14:41:39
+Random Forest
+PCA
+R square of Chlorophyll-a: -0.038605031952534175
+R square of P: -0.015368310619086278
+R square of K: -0.26959764934950736
+Mean squared error of Chlorophyll-a: 8.889533672836436
+Mean squared error of P: 694818.9125236655
+Mean squared error of K: 134607916.68741882
+Mean absolute percentage error of Chlorophyll-a: 0.056555876704709906
+Mean absolute percentage error of P: 0.1963677634711744
+Mean absolute percentage error of K: 0.3404824264226149
+
+==============================================
+22/07/2024, 15:00:59
+Linear Regression
+PCA
+R square of Chlorophyll-a: -0.2632079636878595
+R square of P: 0.014414505550039203
+R square of K: 0.0025573336745911
+Mean squared error of Chlorophyll-a: 10.811934646501472
+Mean squared error of P: 674438.4616802599
+Mean squared error of K: 105752936.2928476
+Mean absolute percentage error of Chlorophyll-a: 0.05984797677563442
+Mean absolute percentage error of P: 0.19765494960876304
+Mean absolute percentage error of K: 0.2977426440427093
+
+==============================================
+22/07/2024, 15:02:53
+Linear Regression
+
+R square of Chlorophyll-a: -13.441018842351722
+R square of P: -8.13404377196203
+R square of K: -11.76650153632428
+Mean squared error of Chlorophyll-a: 123.60225429277331
+Mean squared error of P: 6250447.541255892
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+22/07/2024, 15:05:08
+Random Forest
+PCA
+R square of Chlorophyll-a: -0.09199851127246039
+R square of P: -0.047710223890804704
+R square of K: -0.16110388845733925
+Mean squared error of Chlorophyll-a: 9.346534282040176
+Mean squared error of P: 716950.559506708
+Mean squared error of K: 123104966.02052031
+Mean absolute percentage error of Chlorophyll-a: 0.057725248863488524
+Mean absolute percentage error of P: 0.20284798691080355
+Mean absolute percentage error of K: 0.33251566651041936
+
+==============================================
+22/07/2024, 15:19:42
+SVR
+PCA
+R square of Chlorophyll-a: -0.0795036306278718
+R square of P: -0.012110123436639864
+R square of K: -0.10650076176877632
+Mean squared error of Chlorophyll-a: 9.239589236704388
+Mean squared error of P: 692589.3274054085
+Mean squared error of K: 117315720.00865781
+Mean absolute percentage error of Chlorophyll-a: 0.05713383288873421
+Mean absolute percentage error of P: 0.1976211516133974
+Mean absolute percentage error of K: 0.3200527383512043
+
+==============================================
+22/07/2024, 15:33:28
+Ridge
+PCA
+R square of Chlorophyll-a: -0.23500712011044445
+R square of P: 0.04090725511918292
+R square of K: 0.020656489214958662
+Mean squared error of Chlorophyll-a: 10.570560552528006
+Mean squared error of P: 656309.411115179
+Mean squared error of K: 103833990.06422259
+Mean absolute percentage error of Chlorophyll-a: 0.059399648322858906
+Mean absolute percentage error of P: 0.19552872158605386
+Mean absolute percentage error of K: 0.29640335604513124
+
+==============================================
+22/07/2024, 15:33:28
+Ridge
+PCA
+R square of Chlorophyll-a: -0.23500712011044445
+R square of P: 0.04090725511918292
+R square of K: 0.020656489214958662
+Mean squared error of Chlorophyll-a: 10.570560552528006
+Mean squared error of P: 656309.411115179
+Mean squared error of K: 103833990.06422259
+Mean absolute percentage error of Chlorophyll-a: 0.059399648322858906
+Mean absolute percentage error of P: 0.19552872158605386
+Mean absolute percentage error of K: 0.29640335604513124
+
+==============================================
+29/07/2024, 15:58:03
+Ridge
+
+R square of Chlorophyll-a: -0.2265040917574026
+R square of P: 0.03142408127441543
+R square of K: 0.04529055458533504
+Mean squared error of Chlorophyll-a: 10.497782206053655
+Mean squared error of P: 662798.7691827719
+Mean squared error of K: 101222186.06415452
+Mean absolute percentage error of Chlorophyll-a: 0.05902848402394729
+Mean absolute percentage error of P: 0.19786995438252927
+Mean absolute percentage error of K: 0.29674649806152975
+
+==============================================
+29/07/2024, 16:03:13
+SVR
+
+R square of Chlorophyll-a: -0.08237109476237192
+R square of P: -0.05104990898212791
+R square of K: -0.10568681625278131
+Mean squared error of Chlorophyll-a: 9.264132174775243
+Mean squared error of P: 719235.9138348433
+Mean squared error of K: 117229422.18803622
+Mean absolute percentage error of Chlorophyll-a: 0.057414067083770726
+Mean absolute percentage error of P: 0.20264180483911928
+Mean absolute percentage error of K: 0.3199582874204317
+
+==============================================
+05/08/2024, 21:42:28
+Linear Regression
+
+R square of Chlorophyll-a: -13.441018842351722
+R square of P: -8.13404377196203
+R square of K: -11.76650153632428
+Mean squared error of Chlorophyll-a: 123.60225429277331
+Mean squared error of P: 6250447.541255892
+Mean squared error of K: 1353556519.3207643
+Mean absolute percentage error of Chlorophyll-a: 0.18214400046717352
+Mean absolute percentage error of P: 0.4061978237513949
+Mean absolute percentage error of K: 0.7961022785767277
+
+==============================================
+09/09/2024, 07:09:45
+elastic_net
+
+R square of Chlorophyll-a: -0.029703861370411255
+Mean squared error of Chlorophyll-a: 10.315964766640503
+R square of P: 0.039174099107272986
+Mean squared error of P: 688853.7791397116
+R square of K: -0.05205226273291097
+Mean squared error of K: 107394809.38074571
+Mean absolute percentage error of Chlorophyll-a: 0.06315576233214625
+Mean absolute percentage error of P: 0.16697207671837724
+Mean absolute percentage error of K: 0.2532936831365693
+
+==============================================
+09/09/2024, 07:12:26
+elastic_net
+
+R square of Chlorophyll-a: -0.027526165012052184
+Mean squared error of Chlorophyll-a: 10.294147776583404
+R square of P: 0.03917415329001428
+Mean squared error of P: 688853.740293979
+R square of K: -0.05205229581348281
+Mean squared error of K: 107394812.75765182
+Mean absolute percentage error of Chlorophyll-a: 0.06317813700165165
+Mean absolute percentage error of P: 0.16697207249340854
+Mean absolute percentage error of K: 0.25329368845884065

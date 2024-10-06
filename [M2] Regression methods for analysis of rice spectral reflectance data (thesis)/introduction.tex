@@ -1,0 +1,39 @@
+\section{Context \& Motivation}
+
+Rice is well known as an indispensable ingredient providing daily nourishment for more than half of the world's population.
+With the upward trends of the world's population projections,
+it has become more and more essential to not only maintain but also increase the rice yield efficiency.
+The health of rice production has been proven to be linked directly to the amount of nutrients in the plants,
+especially Chlorophyll (Chlo), Phosphorus(P), and Potassium (K).
+A lower level of concentration means a diminished yield.
+A sufficient amount of Nitrogen will improve plant size, spikelet, panicle health, and yields.
+Phosphorus affects the rice's flower blooming cycle, helps root growth, and plants immunity against diseases and drought. \cite{hindersah2022rice}
+Potassium increases rice's culm strength and prevents plants from topping on each other.
+However, fertilizing crops excessively can lead to reducing the branch strength and attracting unwanted
+vermin, fungi, and other foreign organisms.
+The appearance of leaves, including their color, shape, and sheath, provides valuable information
+about a plant's nutrient and health status,
+which is closely tied to its nutritional content.
+The measurement of the chemical components present in a plant can be determined through its leaves and canopy's spectral reflectance signature.
+
+While analyzing spectral reflectance gives the most accurate result,
+this method can only be done on a small scale due to its high-cost, time-consuming, labor-intensive process.
+The fertilization also needs to be carried out in a timely manner during the plant growth stage.
+Remote sensing is one of the more practical approaches for monitoring hundreds of hectares of rice fields.
+It can be swiftly deployed over larger areas with minimum impact on the crops.
+The plant's nutrition content can be analyzed through hyper-spectral imaging techniques.
+Drone armed with multi-spectral cameras with very high spatial resolution are flown over the fields
+and gather images in hundreds of different bandwidths.
+Scientists from many fields have been using these hyperspectral images to analyze many chemical components in crop leaves.
+In spite of their usefulness, the task of processing the data and accuracy of crops determined nutrition values leaves a lot to be desired.
+
+
+One of the more popular method is ultilising normalized difference vegetation index also known as NDVI. However, since it constists of 2 specified bandwidth red and infrared, there a thounsands of combination pairs. Therefore it is quite a challenges to maximize the method effectiveness. This is where we apply machine learning. Machine learning techniques if implemented properly, are regarded as a powerful for predicting agriculture indices using data obtained from specialised remote sensing machine\cite{behmann2015review}. They are capabled of autonomously solving nonlinear challenges using dataset combined from multiple variables, which resolves our labor problem. Their result when analyze with a large number of bandwidths and others spectral information have proven to be quite promissing \cite{van2014gaussian}. Machine learning can ultilise more informative features and generate a high-accuracy predicton modelling\cite{panda2010application}.
+
+\section{Objectives}
+The objective of this project is to find the best prediction result, along with it the pairs of NDVI's wavelegth correspondingly to the best models, First, we need to develop multiple model capable of identifying the concentrations of Phosphorus (P), potassium (K), and Chlorophyll-a based on reflectance data collected from replicates and their sub-replicates. Afterwards, these regression technique is extensively examined and analysed through multiple different bandwidth. In summary, we aim to comprehensively assess the accuracy and precision of our models and spectral band, providing valuable insights into their performance and suitability for its practical applications.
+
+% Fix these
+\section{Related Work}
+During the time working on this study, multiple documents with similar topics and challenges was used as reference documents. In the research “Spectral Reflectance Characteristics and Chlorophyll Content Estimation Model of Quercus aquifolioides Leaves at Different Altitudes in Seijila Mountain” \cite{zhu2020spectral}, by using a dataset of 60 samples  of spectral parameters explored regression models to predict Chlorophyll content. Their analysis contains 9 different spectral characteristics of plants as predictor variables, with Chlorophyll content serving as the response variable. They applied univariate regression techniques including index, linear, and quadratic polynomial models, to control accurate estimation models. As for the result, the R-squared for the RGP model seems to be the greatest one with remarkable values of 0.8523.
+Another work that was used as reference is the study of “Predicting Nitrogen Content in Rice Leaves Using Multi-Spectral Images with a Hybrid Radial Basis Function Neutral Network and Partial Least-Squares Regression” \cite{yu2018development} is the combination of Multi-Spectral Imagse, a Hybrid Radial Basis Function Neural Network, and Partial Least-Squares Regression. The evaluation metrics are MAE, MAPE, and RMSE (similar to MSE but different when RMSE is the square root of MSE). The most remarkable performance goes to the RBFNN model which is outstanding in both the growing and mature stages. During the growing stage, it achieves a MAPE of 0.5399, while with the mature stage, it records a MAPE of 0.1566. These results when compared with GRL seem to be surpassed when this model has the MAPE of 1.0545 with the growing stage and 0.7399 with the mature stage. Which also performs well is the GRM with 1.2395 of MAPE in the growing stage and 1.2272 in the mature stage. 

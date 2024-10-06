@@ -1,0 +1,421 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/global//global/global}
+    \entry{panda2010application}{article}{}
+      \name{author}{3}{}{%
+        {{hash=5550aee3c4b1e5f9db48ee429d477e2d}{%
+           family={Panda},
+           familyi={P\bibinitperiod},
+           given={Sudhanshu\bibnamedelima Sekhar},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=5c98099af30820760b9dadf26c16566b}{%
+           family={Ames},
+           familyi={A\bibinitperiod},
+           given={Daniel\bibnamedelima P},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=be10fbed9cce9ff43e7931ad0b65efe3}{%
+           family={Panigrahi},
+           familyi={P\bibinitperiod},
+           given={Suranjan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Molecular Diversity Preservation International}%
+      }
+      \strng{namehash}{b427bb1babfde70acb5451667b7f47e8}
+      \strng{fullhash}{b427bb1babfde70acb5451667b7f47e8}
+      \strng{bibnamehash}{b427bb1babfde70acb5451667b7f47e8}
+      \strng{authorbibnamehash}{b427bb1babfde70acb5451667b7f47e8}
+      \strng{authornamehash}{b427bb1babfde70acb5451667b7f47e8}
+      \strng{authorfullhash}{b427bb1babfde70acb5451667b7f47e8}
+      \field{labelalpha}{PAP10}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Remote sensing}
+      \field{number}{3}
+      \field{title}{Application of vegetation indices for agricultural crop yield prediction using neural network techniques}
+      \field{volume}{2}
+      \field{year}{2010}
+      \field{pages}{673\bibrangedash 696}
+      \range{pages}{24}
+    \endentry
+    \entry{van2014gaussian}{article}{}
+      \name{author}{6}{}{%
+        {{hash=af207b84cdb1d1134a9ab870fa009e54}{%
+           family={Van\bibnamedelima Wittenberghe},
+           familyi={V\bibinitperiod\bibinitdelim W\bibinitperiod},
+           given={Shari},
+           giveni={S\bibinitperiod}}}%
+        {{hash=eaafac414dd048c82c7b6acbefab97fe}{%
+           family={Verrelst},
+           familyi={V\bibinitperiod},
+           given={Jochem},
+           giveni={J\bibinitperiod}}}%
+        {{hash=79ab7b8b30eff3e1e405a94dff40feb2}{%
+           family={Rivera},
+           familyi={R\bibinitperiod},
+           given={Juan\bibnamedelima Pablo},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=e45ae1b9399615d08411b9d56b079747}{%
+           family={Alonso},
+           familyi={A\bibinitperiod},
+           given={Luis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=45211e9ce57f631f5b8eeb4e6abafd51}{%
+           family={Moreno},
+           familyi={M\bibinitperiod},
+           given={José},
+           giveni={J\bibinitperiod}}}%
+        {{hash=514af2764559f502bf53d220caec2ec3}{%
+           family={Samson},
+           familyi={S\bibinitperiod},
+           given={Roeland},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{da7851dba349870a56e23f0cd8e6b65f}
+      \strng{fullhash}{199c4d41fb9c54d5b9b05008325d2afd}
+      \strng{bibnamehash}{da7851dba349870a56e23f0cd8e6b65f}
+      \strng{authorbibnamehash}{da7851dba349870a56e23f0cd8e6b65f}
+      \strng{authornamehash}{da7851dba349870a56e23f0cd8e6b65f}
+      \strng{authorfullhash}{199c4d41fb9c54d5b9b05008325d2afd}
+      \field{labelalpha}{Van+14}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Photochemistry and Photobiology B: Biology}
+      \field{title}{Gaussian processes retrieval of leaf parameters from a multi-species reflectance, absorbance and fluorescence dataset}
+      \field{volume}{134}
+      \field{year}{2014}
+      \field{pages}{37\bibrangedash 48}
+      \range{pages}{12}
+    \endentry
+    \entry{behmann2015review}{article}{}
+      \name{author}{5}{}{%
+        {{hash=2ac1e739d827602b2e43bba7a1786091}{%
+           family={Behmann},
+           familyi={B\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=857c06a7964e2453140dfeef67d607f4}{%
+           family={Mahlein},
+           familyi={M\bibinitperiod},
+           given={Anne-Katrin},
+           giveni={A\bibinithyphendelim K\bibinitperiod}}}%
+        {{hash=36fe25ced8cdb6769b2d47f5eebb3322}{%
+           family={Rumpf},
+           familyi={R\bibinitperiod},
+           given={Till},
+           giveni={T\bibinitperiod}}}%
+        {{hash=2e81a65e848fa68f54926989e7573f6f}{%
+           family={Römer},
+           familyi={R\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=2aab3f68f708b04d1e3ae68189ca0def}{%
+           family={Plümer},
+           familyi={P\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{763ecc6fe15aa93346af9aad624e545d}
+      \strng{fullhash}{6ecae24a253733d575f88432cb673cfc}
+      \strng{bibnamehash}{763ecc6fe15aa93346af9aad624e545d}
+      \strng{authorbibnamehash}{763ecc6fe15aa93346af9aad624e545d}
+      \strng{authornamehash}{763ecc6fe15aa93346af9aad624e545d}
+      \strng{authorfullhash}{6ecae24a253733d575f88432cb673cfc}
+      \field{labelalpha}{Beh+15}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Precision agriculture}
+      \field{title}{A review of advanced machine learning methods for the detection of biotic stress in precision crop protection}
+      \field{volume}{16}
+      \field{year}{2015}
+      \field{pages}{239\bibrangedash 260}
+      \range{pages}{22}
+    \endentry
+    \entry{yu2018development}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3da47e56db74f4f99c565d5b61b5e068}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Peigen},
+           giveni={P\bibinitperiod}}}%
+        {{hash=497533d2e5b68618130ec4798d42ee12}{%
+           family={Low},
+           familyi={L\bibinitperiod},
+           given={Mei\bibnamedelima Yin},
+           giveni={M\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=60805ce6fa7c476b8ab017792deba6d5}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Weibiao},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f4ef8d187af529f21aedfa500b3e3390}
+      \strng{fullhash}{f4ef8d187af529f21aedfa500b3e3390}
+      \strng{bibnamehash}{f4ef8d187af529f21aedfa500b3e3390}
+      \strng{authorbibnamehash}{f4ef8d187af529f21aedfa500b3e3390}
+      \strng{authornamehash}{f4ef8d187af529f21aedfa500b3e3390}
+      \strng{authorfullhash}{f4ef8d187af529f21aedfa500b3e3390}
+      \field{labelalpha}{YLZ18}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Food Research International}
+      \field{title}{Development of a partial least squares-artificial neural network (PLS-ANN) hybrid model for the prediction of consumer liking scores of ready-to-drink green tea beverages}
+      \field{volume}{103}
+      \field{year}{2018}
+      \field{pages}{68\bibrangedash 75}
+      \range{pages}{8}
+    \endentry
+    \entry{zhu2020spectral}{article}{}
+      \name{author}{7}{}{%
+        {{hash=dc9a18c67acccdf7494ba922d20de731}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Jiyou},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8523dc1dbfa7de4b1a172c8aba56585f}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Weijun},
+           giveni={W\bibinitperiod}}}%
+        {{hash=1e67f4924f5aced53532b5142c8823ec}{%
+           family={Yao},
+           familyi={Y\bibinitperiod},
+           given={Jiangming},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1095175f3f5ed527803646f5ffcee352}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Qiang},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=28ee41c98254499263b64813a932439d}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Chengyang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=e613367f73f45da5e90b30df84ebb777}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Huaguo},
+           giveni={H\bibinitperiod}}}%
+        {{hash=729489a303318ec168c0cc488268687e}{%
+           family={Mhae\bibnamedelimb B.\bibnamedelimi Jandug},
+           familyi={M\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={Catherine},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI}%
+      }
+      \strng{namehash}{49c138ca864a18784f0fc25e3ba13878}
+      \strng{fullhash}{cc679d12e1b7def5ed3fc70372df98cb}
+      \strng{bibnamehash}{49c138ca864a18784f0fc25e3ba13878}
+      \strng{authorbibnamehash}{49c138ca864a18784f0fc25e3ba13878}
+      \strng{authornamehash}{49c138ca864a18784f0fc25e3ba13878}
+      \strng{authorfullhash}{cc679d12e1b7def5ed3fc70372df98cb}
+      \field{labelalpha}{Zhu+20}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Sciences}
+      \field{number}{10}
+      \field{title}{Spectral reflectance characteristics and chlorophyll content estimation model of Quercus aquifolioides leaves at different altitudes in Sejila Mountain}
+      \field{volume}{10}
+      \field{year}{2020}
+      \field{pages}{3636}
+      \range{pages}{1}
+    \endentry
+    \entry{optuna}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=14bdc063751ee9f7ccf989cf006f385a}{%
+           family={Chakrabarti},
+           familyi={C\bibinitperiod},
+           given={Sion},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{14bdc063751ee9f7ccf989cf006f385a}
+      \strng{fullhash}{14bdc063751ee9f7ccf989cf006f385a}
+      \strng{bibnamehash}{14bdc063751ee9f7ccf989cf006f385a}
+      \strng{authorbibnamehash}{14bdc063751ee9f7ccf989cf006f385a}
+      \strng{authornamehash}{14bdc063751ee9f7ccf989cf006f385a}
+      \strng{authorfullhash}{14bdc063751ee9f7ccf989cf006f385a}
+      \field{labelalpha}{Cha21}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Analytics Vidhya}
+      \field{title}{Optimize your optimizations using Optuna}
+      \field{year}{2021}
+    \endentry
+    \entry{hindersah2022rice}{article}{}
+      \name{author}{3}{}{%
+        {{hash=6e558dd3d0352ca138bbae95d14a5ce9}{%
+           family={Hindersah},
+           familyi={H\bibinitperiod},
+           given={Reginawanti},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3ee3ad8fc22ae3d81d556b49b903ac40}{%
+           family={Kalay},
+           familyi={K\bibinitperiod},
+           given={Agusthinus\bibnamedelima Marthin},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=608ba1cbdf3e36d4646827ec4eee0309}{%
+           family={Talahaturuson},
+           familyi={T\bibinitperiod},
+           given={Abraham},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {De Gruyter}%
+      }
+      \strng{namehash}{22512c90264294eaf77a74fdf6f3b419}
+      \strng{fullhash}{22512c90264294eaf77a74fdf6f3b419}
+      \strng{bibnamehash}{22512c90264294eaf77a74fdf6f3b419}
+      \strng{authorbibnamehash}{22512c90264294eaf77a74fdf6f3b419}
+      \strng{authornamehash}{22512c90264294eaf77a74fdf6f3b419}
+      \strng{authorfullhash}{22512c90264294eaf77a74fdf6f3b419}
+      \field{labelalpha}{HKT22}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Open Agriculture}
+      \field{number}{1}
+      \field{title}{Rice yield grown in different fertilizer combination and planting methods: Case study in Buru Island, Indonesia}
+      \field{volume}{7}
+      \field{year}{2022}
+      \field{pages}{871\bibrangedash 881}
+      \range{pages}{11}
+    \endentry
+    \entry{ridge}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e1d4ed0bc37c1a0df33cc7c16b426bd7}{%
+           family={Ashok},
+           familyi={A\bibinitperiod},
+           given={Prashanth.\bibnamedelimi n.d.},
+           giveni={P\bibinitperiod\bibinitdelim n\bibinitperiod}}}%
+      }
+      \strng{namehash}{e1d4ed0bc37c1a0df33cc7c16b426bd7}
+      \strng{fullhash}{e1d4ed0bc37c1a0df33cc7c16b426bd7}
+      \strng{bibnamehash}{e1d4ed0bc37c1a0df33cc7c16b426bd7}
+      \strng{authorbibnamehash}{e1d4ed0bc37c1a0df33cc7c16b426bd7}
+      \strng{authornamehash}{e1d4ed0bc37c1a0df33cc7c16b426bd7}
+      \strng{authorfullhash}{e1d4ed0bc37c1a0df33cc7c16b426bd7}
+      \field{labelalpha}{Ash23}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Great Learning}
+      \field{title}{Ridge Regression Definition & Examples | What is Ridge Regression?}
+      \field{year}{2023}
+    \endentry
+    \entry{DecisionTree}{misc}{}
+      \field{labelalpha}{23}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extraalpha}{1}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Javatpoint. Accessed}
+      \field{title}{Decision Tree Algorithm in Machine Learning}
+      \field{year}{2023}
+    \endentry
+    \entry{pca}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=59f484da1bb5341a2bdb0dfd8f6fe96a}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Ajitesh},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{59f484da1bb5341a2bdb0dfd8f6fe96a}
+      \strng{fullhash}{59f484da1bb5341a2bdb0dfd8f6fe96a}
+      \strng{bibnamehash}{59f484da1bb5341a2bdb0dfd8f6fe96a}
+      \strng{authorbibnamehash}{59f484da1bb5341a2bdb0dfd8f6fe96a}
+      \strng{authornamehash}{59f484da1bb5341a2bdb0dfd8f6fe96a}
+      \strng{authorfullhash}{59f484da1bb5341a2bdb0dfd8f6fe96a}
+      \field{labelalpha}{Kum23}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Analytics Yogi}
+      \field{title}{PCA Explained Variance Concepts with Python Example}
+      \field{year}{2023}
+    \endentry
+    \entry{randForest}{misc}{}
+      \field{labelalpha}{23}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extraalpha}{2}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{TIBCO Software. Accessed}
+      \field{title}{What is a Random Forest?}
+      \field{year}{2023}
+    \endentry
+    \entry{chlorophyll}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c497f7a17d7f2e381a2bba00687d6b70}{%
+           family={Encyclopaedia},
+           familyi={E\bibinitperiod},
+           given={T.\bibnamedelimi Editors},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod},
+           prefix={of},
+           prefixi={o\bibinitperiod}}}%
+      }
+      \strng{namehash}{c497f7a17d7f2e381a2bba00687d6b70}
+      \strng{fullhash}{c497f7a17d7f2e381a2bba00687d6b70}
+      \strng{bibnamehash}{c497f7a17d7f2e381a2bba00687d6b70}
+      \strng{authorbibnamehash}{c497f7a17d7f2e381a2bba00687d6b70}
+      \strng{authornamehash}{c497f7a17d7f2e381a2bba00687d6b70}
+      \strng{authorfullhash}{c497f7a17d7f2e381a2bba00687d6b70}
+      \field{labelalpha}{Enc24}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Encyclopedia Britannica}
+      \field{title}{chlorophyll}
+      \field{year}{2024}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

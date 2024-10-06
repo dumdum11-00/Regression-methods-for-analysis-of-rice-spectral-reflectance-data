@@ -1,0 +1,1319 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+cHLOE
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1883}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Methods
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Red bandwidth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+IR bandwidth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R square
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+735
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.299285863
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.28\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+738
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1093
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.28778986
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.30\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+730
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.275941423
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.30\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+730
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1094
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.286555199
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.30\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+737
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.311230227
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.30\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+680
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1665
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.67683125
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.53\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+650
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1067
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.493064482
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.54\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+642
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.588484947
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.54\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+677
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+937
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.516774513
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.55\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+637
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1300
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.527544172
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.55\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.19
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.15272789
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.77\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.19
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.15272789
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.77\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+766
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.890171071
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.78\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+765
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.910342117
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.78\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.928388891
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.78\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+758
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.22
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.46803389
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.83\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+757
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.22
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.47387994
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.86\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+756
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.02904318
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.91\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.02936277
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.91\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+751
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.03365566
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.91\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+752
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.03727319
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.91\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+755
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.03919053
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.91\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+759
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.7475421
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.92\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+754
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.27
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.83335362
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+756
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.27
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.8463624
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+5.98\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+660
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.31318804
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.33\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+661
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.31316867
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.33\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+659
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.31320883
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.33\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+658
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.31320323
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.33\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+657
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.31320132
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.33\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+Phos
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1883}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Red bandwidth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+IR bandwidth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R square
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+660
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+672,150.97
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+16.51\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+661
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+672,136.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+16.51\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+659
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+672,216.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+16.51\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+658
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+672,347.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+16.51\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+657
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+672,455.44
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+16.51\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+642
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+679,799.94
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+19.96\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+680
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1665
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+706,177.95
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.01\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+637
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1300
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+702,782.86
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.25\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+745,210.37
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.39\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+751
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+745,749.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.40\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+752
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+746,331.77
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.41\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+756
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+746,576.25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.41\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+755
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+747,475.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.42\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+650
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1067
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764,132.21
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.53\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+730
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1094
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764,676.10
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.60\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+730
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+766,628.28
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.63\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+737
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+766,559.43
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.64\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+735
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+766,860.31
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.64\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+738
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1093
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+765,972.87
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+20.65\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+754
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+803,237.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.26\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+766
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+809,677.58
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.27\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+765
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+810,264.58
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.27\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.19
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+811,001.53
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.28\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+823,641.89
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.51\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+823,641.89
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.51\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+677
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+937
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+820,829.62
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.62\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+756
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.33
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+911,833.28
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.86\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+757
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+917,429.71
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.99\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+758
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.47
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1,002,756.80
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+23.36\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+759
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.49
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1,019,264.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+23.54\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+K
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1883}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1623}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Red bandwidth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+IR bandwidth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R square
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+661
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105,099,723.87
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+24.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+660
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105,110,232.58
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+24.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+657
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105,119,786.92
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+24.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+659
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105,120,528.25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+24.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Elasticnet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+658
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1426
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105,125,719.86
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+24.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+110,605,690.54
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+30.89\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+110,605,690.54
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+30.89\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+755
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+113,855,424.25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+30.93\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+756
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+113,875,397.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+30.93\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+752
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+113,922,615.78
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+30.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+751
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+113,950,018.38
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+30.94\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+750
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+113,971,957.88
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+30.95\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+111,531,206.47
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+31.07\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+765
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+111,604,128.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+31.09\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+625
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+766
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+111,676,384.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+31.10\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+754
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.42
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+150,687,608.47
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+32.18\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+730
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1094
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.24
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+131,477,468.56
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+33.66\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+730
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+132,642,489.61
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+33.77\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+737
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+132,591,840.63
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+33.78\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+735
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1084
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+133,296,164.45
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+33.81\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+738
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1093
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+133,595,962.28
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+33.92\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+680
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1665
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.36
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+144,501,023.36
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+34.53\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+759
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-1.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+215,001,655.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+35.02\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+650
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1067
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.49
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+158,479,178.69
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+35.74\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+758
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-1.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+228,513,700.11
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+35.99\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+642
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+764
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.51
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+160,232,536.88
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+36.23\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+637
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1300
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.52
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+160,836,192.42
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+36.49\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forrest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+677
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+937
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.51
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+160,469,704.42
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+36.99\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+756
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-1.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+239,595,865.40
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+37.30\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+740
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+757
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-1.27
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+240,574,703.41
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+37.54\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\end{document}

@@ -1,0 +1,4830 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{multirow}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{quote}
+UNIVERSITY OF SCIENCE AND TECHNOLOGY OF HANOI
+
+\textbf{UNDERGRADUATE SCHOOL}
+\end{quote}
+
+\includegraphics[width=4.09597in,height=1.96396in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image5.png}
+
+\textbf{BACHELOR THESIS}
+
+by
+
+Vo Thuy Trang
+
+BI11-270
+
+Information and Communication Technology
+
+Title:
+
+\textbf{Regression methods for spectral reflectance data}
+
+Supervisor: Dr. Tran Giang Son
+
+Lab name: USTH ICTLab
+
+\textbf{Hanoi, September 2023}
+
+\begin{quote}
+\textbf{Declaration}
+
+I hereby, Vo Thuy Trang, declare that my thesis represents my own work
+after doing an internship at ICTLab, USTH.
+
+I have read the University's internship guideline. In the case of
+plagiarism appearing in my thesis, I accept responsibility for the
+conduct of the procedures in accordance with the University's Committee.
+
+Hanoi, September 2023
+
+Signature
+
+Vo Thuy Trang
+\end{quote}
+
+\hypertarget{acknowledgement}{%
+\subsection{\texorpdfstring{\textbf{Acknowledgement}}{Acknowledgement}}\label{acknowledgement}}
+
+\begin{quote}
+To finish this project we cannot ignore the support of many individuals,
+and we would like to express our gratitude to them.
+
+Firstly, I am grateful for having the opportunity of doing an Internship
+at ICTLab, University of Science and Technology of Hanoi. This is a
+great time for me working with outstanding people, and it is also a
+chance to prepare for my upcoming journey.
+
+Especially our sincere gratitude to Dr. Tran Giang Son, out supervisor,
+because of giving us much support, meaningful feedback, and helpful
+guidance regarding every aspect of our research
+
+Many thanks to the people who work in ICTLab for their assistance during
+my internship.
+
+Finally, I would like to say thank you to my family who support and keep
+me in high spirit to finish this project.
+
+Vo Thuy Trang
+
+Hanoi, September, 2023
+\end{quote}
+
+\hypertarget{list-of-acronyms}{%
+\subsection{\texorpdfstring{\textbf{List of
+Acronyms}}{List of Acronyms}}\label{list-of-acronyms}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1454}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.8546}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Adaptive Boosting
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Categorical Boosting
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+K
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Potassium
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Light Gradient Boosting Machine
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mean Absolute Percentage Error
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mean Square Error
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+P
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Phosphorus
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Principal Component Analysis
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Support Vector Regression
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+XGBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Extreme Gradient Boosting
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\hypertarget{table-of-contents}{%
+\subsection{\texorpdfstring{\textbf{Table of
+Contents}}{Table of Contents}}\label{table-of-contents}}
+
+\protect\hyperlink{acknowledgement}{\textbf{Acknowledgement 3}}
+
+\protect\hyperlink{list-of-acronyms}{\textbf{List of Acronyms 4}}
+
+\protect\hyperlink{table-of-contents}{\textbf{Table of Contents 5}}
+
+\protect\hyperlink{list-of-figures}{\textbf{List of Figures 7}}
+
+\protect\hyperlink{list-of-tables}{\textbf{List of Tables 8}}
+
+\protect\hyperlink{abstract}{\textbf{Abstract 9}}
+
+\protect\hyperlink{introduction}{\textbf{1. Introduction 10}}
+
+\begin{quote}
+\protect\hyperlink{context-and-motivation}{1.1. Context and motivation
+10}
+
+\protect\hyperlink{objectives}{1.2. Objectives 10}
+
+\protect\hyperlink{related-works}{1.3. Related works 10}
+
+\protect\hyperlink{report-structure}{1.4. Report Structure 11}
+\end{quote}
+
+\protect\hyperlink{theoretical-background}{\textbf{2. Theoretical
+background 12}}
+
+\begin{quote}
+\protect\hyperlink{spectral-reflectance}{2.1. Spectral Reflectance 12}
+
+\protect\hyperlink{po2.2-phosphorus-concentration}{2.2 Phosphorus
+concentration 13}
+
+\protect\hyperlink{potassium-concentration}{2.3. Potassium concentration
+13}
+
+\protect\hyperlink{chlorophyll}{2.4. Chlorophyll 13}
+
+\protect\hyperlink{regression-analysis}{2.5. Regression Analysis 14}
+
+\protect\hyperlink{principal-component-analysis}{2.6. Principal
+Component Analysis 14}
+
+\protect\hyperlink{machine-learning}{2.7. Machine Learning 16}
+
+\protect\hyperlink{ridge}{2.7.1. Ridge 16}
+
+\protect\hyperlink{lasso}{2.7.2. Lasso 17}
+
+\protect\hyperlink{elasticnet}{2.7.3. ElasticNet 18}
+
+\protect\hyperlink{decision-tree}{2.7.4. Decision Tree 18}
+
+\protect\hyperlink{random-forest}{2.7.5. Random Forest 19}
+
+\protect\hyperlink{svr}{2.7.6. SVR 20}
+
+\protect\hyperlink{bayesian-ridge}{2.7.7. Bayesian Ridge 21}
+
+\protect\hyperlink{lasso-lars}{2.7.8. Lasso Lars 22}
+
+\protect\hyperlink{lars}{2.7.9. Lars 22}
+
+\protect\hyperlink{boosting}{2.7.10. Boosting 23}
+
+\protect\hyperlink{gradientboosting}{2.7.10.1. GradientBoosting 24}
+
+\protect\hyperlink{adaptive-boosting-adaboosting}{2.7.10.2. Adaptive
+Boosting ( AdaBoosting ) 25}
+
+\protect\hyperlink{extreme-gradient-boosting-xgboost}{2.7.10.3. Extreme
+Gradient Boosting ( XGBoost ) 27}
+
+\protect\hyperlink{categorical-boosting-catboost}{2.7.10.4. Categorical
+Boosting ( CatBoost ) 28}
+
+\protect\hyperlink{lgbm}{2.7.10.5 LGBM 29}
+\end{quote}
+
+\protect\hyperlink{materials-and-scientific-methods}{\textbf{3.
+Materials and Scientific Methods 30}}
+
+\begin{quote}
+\protect\hyperlink{data-description}{3.1. Data Description 30}
+
+\protect\hyperlink{structure-of-.sed-files-in-folder-spectral-reflectance-measurement}{3.1.1.
+Structure of .sed files in folder Spectral reflectance measurement 30}
+
+\protect\hyperlink{structure-of-data_mua1_2022.csv-file}{3.1.2.
+Structure of DATA\_Mua1\_2022.csv file 31}
+
+\protect\hyperlink{scientific-methods}{3.2. Scientific Methods 32}
+
+\protect\hyperlink{overall-framework}{3.2.1. Overall Framework 32}
+
+\protect\hyperlink{preprocess-data}{3.2.2. Preprocess Data 32}
+
+\protect\hyperlink{tools-library}{3.3. Tools \& Library 33}
+
+\protect\hyperlink{model-configuration-and-training}{3.4. Model
+Configuration and Training 33}
+
+\protect\hyperlink{machine-learning-1}{3.4.1. Machine Learning 33}
+
+\protect\hyperlink{model-evaluation}{3.5 Model Evaluation 35}
+
+\protect\hyperlink{mean-squared-error-mse}{3.5.1. Mean Squared Error
+(MSE) 35}
+
+\protect\hyperlink{r-square}{3.5.2. R square 36}
+
+\protect\hyperlink{mape}{3.5.3. MAPE 36}
+\end{quote}
+
+\protect\hyperlink{result-and-discussion}{\textbf{4. Result and
+Discussion 37}}
+
+\begin{quote}
+\protect\hyperlink{chlorophyll-model-prediction-and-comparision}{4.1.
+Chlorophyll Model Prediction and Comparision 37}
+
+\protect\hyperlink{p-model-prediction-and-comparison}{4.2. P Model
+Prediction and Comparison 39}
+
+\protect\hyperlink{k-model-prediction-and-comparison}{4.3. K Model
+Prediction and Comparison 41}
+\end{quote}
+
+\protect\hyperlink{conclusion-and-future-work}{\textbf{5. Conclusion and
+Future Work 43}}
+
+\begin{quote}
+\protect\hyperlink{conclusion}{5.1. Conclusion 43}
+
+\protect\hyperlink{future-work}{5.2. Future Work 44}
+\end{quote}
+
+\protect\hyperlink{reference}{\textbf{Reference 45}}
+
+\protect\hyperlink{appendix-a}{\textbf{Appendix A}}
+\protect\hyperlink{tables-of-hyperparameter-for-each-machine-learning-models}{\textbf{Tables
+of Hyperparameter for each Machine learning models 47}}
+
+\hypertarget{section}{%
+\subsection{}\label{section}}
+
+\hypertarget{section-1}{%
+\subsection{}\label{section-1}}
+
+\hypertarget{list-of-figures}{%
+\subsection{\texorpdfstring{\textbf{List of
+Figures}}{List of Figures}}\label{list-of-figures}}
+
+\begin{quote}
+\protect\hyperlink{figure-1---spectral-reflectance-signature-of-healthy-vegetation-dry-soil-gray-grass-litter-water-and-snow-18}{Figure
+1 - Spectral reflectance signature of healthy vegetation, dry soil, gray
+grass litter, water, and snow (18) 13}
+
+\protect\hyperlink{figure-2---the-scatter-plot-shows-the-relationship-between-the-dependent-variable-and-independent-variable-7}{Figure
+2 - The scatter plot shows the relationship between the dependent
+variable and independent variable (7) 14}
+
+\protect\hyperlink{figure-3---workflow-diagram-of-decision-tree-10}{Figure
+3 - Workflow diagram of Decision Tree (10) 19}
+
+\protect\hyperlink{figure-4---workflow-diagram-of-random-forest-11}{Figure
+4 - Workflow diagram of Random Forest (11) 20}
+
+\protect\hyperlink{figure-5---lars-skrinkage-12}{Figure 5 - Lars
+Skrinkage (12) 23}
+
+\protect\hyperlink{figure-6---workflow-of-boosting-algorithm}{Figure 6 -
+Workflow of Boosting algorithm 24}
+
+\protect\hyperlink{figure-7---illustration-of-how-decision-tree-works-in-catboost-13}{Figure
+7 - Illustration of how decision tree works in CatBoost (13) 29}
+
+\protect\hyperlink{figure-8---illustration-of-leaf-wise-tree-grow-architecture-of-lgbm-14}{Figure
+8 - Illustration of Leaf Wise Tree Grow Architecture of LGBM (14) 29}
+
+\protect\hyperlink{figure-9---nutrients-statistics-description}{Figure 9
+- Nutrients' statistics description 31}
+
+\protect\hyperlink{figure-10---the-workflow-for-developing-the-model}{Figure
+10 - The workflow for developing the model 32}
+
+\protect\hyperlink{figure-11---the-number-of-components-needed-to-explain-variance}{Figure
+11 - The number of components needed to explain variance 34}
+
+\protect\hyperlink{figure-12---illustration-of-our-machine-learning-workflow}{Figure
+12 - Illustration of our machine learning workflow 35}
+\end{quote}
+
+\hypertarget{list-of-tables}{%
+\subsection{\texorpdfstring{\textbf{List of
+Tables}}{List of Tables}}\label{list-of-tables}}
+
+\begin{quote}
+\protect\hyperlink{table-1---comparison-of-learning-models-performance-in-chlorophyll-prediction}{Table
+1 - Comparison of Learning Models Performance in Chlorophyll Prediction
+37}
+
+\protect\hyperlink{table-2---comparison-of-learning-models-performance-in-chlorophyll-prediction-with-3-5-7-pca-components}{Table
+2 - Comparison of Learning Models Performance in Chlorophyll Prediction
+with 3, 5, 7 PCA Components 38}
+
+\protect\hyperlink{table-3---comparison-of-learning-models-performance-in-p-concentration-prediction}{Table
+3 - Comparison of Learning Models Performance in P Concentration
+Prediction 39}
+
+\protect\hyperlink{table-4---comparison-of-learning-models-performance-in-p-concentration-prediction-with-3-5-7-pca-components}{Table
+4 - Comparison of Learning Models Performance in P Concentration
+Prediction with 3, 5, 7 PCA Components 40}
+
+\protect\hyperlink{table-5---comparison-of-learning-models-performance-in-k-concentration-prediction}{Table
+5 - Comparison of Learning Models Performance in K Concentration
+Prediction 41}
+
+\protect\hyperlink{table-6---comparison-of-learning-models-performance-in-k-concentration-prediction-with-3-5-7-pca-components}{Table
+6 - Comparison of Learning Models Performance in K Concentration
+Prediction with 3, 5, 7 PCA Components 42}
+
+\protect\hyperlink{table-a.1---table-of-good-performance-hyperparameters-for-each-models-of-chlorophyll}{Table
+A.1 - Table of good performance' hyperparameters for each models of
+Chlorophyll 47}
+
+\protect\hyperlink{table-a.2---table-of-good-performance-hyperparameters-for-each-models-of-p}{Table
+A.2 - Table of good performance' hyperparameters for each models of P
+48}
+
+\protect\hyperlink{table-a.3---table-of-good-performance-hyperparameters-for-each-models-of-k}{Table
+A.3 - Table of good performance' hyperparameters for each models of K
+50}
+\end{quote}
+
+\hypertarget{section-2}{%
+\subsection{}\label{section-2}}
+
+\hypertarget{section-3}{%
+\subsection{}\label{section-3}}
+
+\hypertarget{section-4}{%
+\subsection{}\label{section-4}}
+
+\hypertarget{section-5}{%
+\subsection{}\label{section-5}}
+
+\hypertarget{section-6}{%
+\subsection{}\label{section-6}}
+
+\hypertarget{abstract}{%
+\subsection{\texorpdfstring{\textbf{Abstract}}{Abstract}}\label{abstract}}
+
+\begin{quote}
+Over time, rice has occupied a central role in our nation's agricultural
+practices, holding the utmost importance in our lives. The process of
+growing rice is time-consuming, passing through various tasks such as
+the initial planting of rice seeds. Among these stages, the application
+of fertilizers seems to be such an important part. Fertilizers play an
+unchangeable role in ensuring that rice receives enough of the necessary
+nutrients for growing and overall development.
+
+However, there is still a challenge for the farmers is the accuracy of
+nutrient levels in rice leaves before fertilization. It is tricky to
+know exactly how much nutrition the rice leaves actually have and how
+much they will need.
+
+Noticing this ongoing problem, we have applied advanced computer
+techniques, particularly Machine Learning, to deal with it in this
+project. Our work on this project is to provide a practical solution for
+farmers to manage fertilizer. In the context of this project, we explore
+the detailed field of analyzing the nutrition in rice leaves. To do
+this, we have used various models in Machine Learning, which may be
+mentioned as Lasso Regression, Linear Regression, and Ridge Regression,
+which help us to understand the data better.
+
+The impact of the models we have chosen could change the future of rice
+farming. It has the potential to completely transform how we
+traditionally accurate the nutrition in rice leaves before, during, and
+after applying fertilizer. This means that we could simplify one of the
+most complex tasks of agriculture. By providing a more efficient and
+accurate way to do this, our project aims to give farmers the tools they
+need to improve rice farming make it more sustainable, and support the
+ongoing success of this agricultural sector.
+\end{quote}
+
+\hypertarget{introduction}{%
+\subsection{\texorpdfstring{\textbf{Introduction}}{Introduction}}\label{introduction}}
+
+\hypertarget{context-and-motivation}{%
+\subsubsection{\texorpdfstring{\textbf{1.1. Context and
+motivation}}{1.1. Context and motivation}}\label{context-and-motivation}}
+
+\begin{quote}
+In farming, fertilizer management is important with growing crops. This
+work is to apply the right amount of nutrients like Nitrogen (N),
+Phosphorus (P), and potassium (K). However, in farming, especially in
+large rice fields, farmers have only one way to know the amount of
+nutrients needed for rice crops is to rely on automated machines to
+spread fertilizers. Moreover, they cannot tell exactly how much
+fertilizer each part of the field gets, and this has a huge effect on
+the quality of the rice produced. To get that information, the farmers
+could check the rice nutrient levels by hand or with a specialized
+machine, but it's hard when working with such a big field.
+
+In this project, we focus on developing Regression Models, which are
+used in various fields to understand the relationships between different
+variables, with the data from a rice field in Phu Tho, provided by Dr.
+Tran Giang Son and his team. Our target is to predict the nutrient
+levels in the rice plants based on various factors. So in this project,
+we have tried as many techniques and models as possible to understand
+and give the best solution to this challenge. However, each model may
+tproduce slightly different results.
+
+And to give the prediction, and to identify the most accurate model, we
+evaluated by using three different metrics: Mean Absolute Percentage
+Error, Mean Squared Error, and R-squared. These metrics help us assess
+how well the models predict the nutrient levels in the rice plants and
+allow us to choose the most effective one for this agricultural
+application.
+\end{quote}
+
+\hypertarget{objectives}{%
+\subsubsection{\texorpdfstring{ \textbf{1.2.
+Objectives}}{ 1.2. Objectives}}\label{objectives}}
+
+\begin{quote}
+The target of this project is to develop a model that is capable of
+identifying the concentrations of Phosphorus (P), potassium (K), and
+Chlorophyll-a based on reflectance data collected from replicates and
+their sub-replicated. Additionally, we are engaged in an extensive
+examination of various regression techniques to detect P, K, and
+Chlorophyll-a concentration levels. In summary, our target is to
+comprehensively assess the accuracy and precision of our models,
+providing valuable insights into their performance and suitability for
+practical applications.
+\end{quote}
+
+\hypertarget{related-works}{%
+\subsubsection{\texorpdfstring{ \textbf{1.3. Related
+works}}{ 1.3. Related works}}\label{related-works}}
+
+\begin{quote}
+When working on this project, we also did research with other reference
+documents that have the same or almost similar topics.
+
+In the research ``Spectral Reflectance Characteristics and Chlorophyll
+Content Estimation Model of Quercus aquifolioides Leaves at Different
+Altitudes in Seijila Mountain''\textsuperscript{(1)} Zhu, J et al, by
+using a dataset of 60 samples of spectral parameters explored regression
+models to predict Chlorophyll content. Their analysis contains 9
+different spectral characteristics of plants as predictor variables,
+with Chlorophyll content serving as the response variable. They applied
+univariate regression techniques including index, linear, and quadratic
+polynomial models, to control accurate estimation models. As for the
+result, the R-squared for the RGP model seems to be the greatest one
+with remarkable values of 0.8523.
+
+Another work we research is the study of ``Predicting Nitrogen Content
+in Rice Leaves Using Multi-Spectral Images with a Hybrid Radial Basis
+Function Neutral Network and Partial Least-Squares Regression''
+\textsuperscript{(2)} is the combination of Multi-Spectral Imagse, a
+Hybrid Radial Basis Function Neural Network, and Partial Least-Squares
+Regression. The evaluation metrics are MAE, MAPE, and RMSE (the same as
+MSE but different when RMSE is the square root of MSE). The most
+remarkable performance goes to the RBFNN model which is outstanding in
+both the growing and mature stages. During the growing stage, it
+achieves a MAPE of 0.5399, while with the mature stage, it records a
+MAPE of 0.1566. These results when compared with GRL seem to be
+surpassed when this model has the MAPE of 1.0545 with the growing stage
+and 0.7399 with the mature stage. Which also performs well is the GRM
+with 1.2395 of MAPE in the growing stage and 1.2272 in the mature stage.
+
+We also made researched with some of Dr. Tran Giang Son other students'
+internships who worked in the same fields as rice leaves. They utilized
+a dataset containing numerous hyperspectral images of the rice fields
+captured on May 6, 2022, which included 122 channels matches with 122
+wavelengths. These images served as input, focusing on the pixels within
+specific areas. Not only did they use Machine Learning models for
+training but also Deep Learning models, which could make their results
+better. Among these models, VGG16 stands out as one of the most robust
+performances. The performance of VGG16 is the most well-built one even
+though it does not have any impressive results but the overall results
+are better when compared with others. Another remarkable performance is
+the R\textsuperscript{2} score achieved by DenseNet121 when working on
+Chlorophyll and N concentration. The difference between our work with
+others is that firstly, we work with spectral data containing a
+substantial 2150 wavelengths, which enables us to capture more
+information so that the result of our works' could be better than with
+others. Moreover, our work has a totally different way of preprocessing
+and using more Machine Learning Models, so our work will have more
+statistics numbers for comparison and analysis.
+\end{quote}
+
+\hypertarget{report-structure}{%
+\subsubsection{\texorpdfstring{ \textbf{1.4. Report
+Structure}}{ 1.4. Report Structure}}\label{report-structure}}
+
+\begin{quote}
+Our report is structured as follows:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Section 1: Introduction
+  \end{quote}
+\end{itemize}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Section 2: Theoretical background
+  \end{quote}
+\item
+  \begin{quote}
+  Section 3: Materials and Scientific Methods
+  \end{quote}
+\item
+  \begin{quote}
+  Section 4: Result and Discussion
+  \end{quote}
+\item
+  \begin{quote}
+  Section 5: Conclusion and Future Work
+  \end{quote}
+\end{itemize}
+
+\hypertarget{theoretical-background}{%
+\subsection{\texorpdfstring{\textbf{Theoretical background}
+}{Theoretical background }}\label{theoretical-background}}
+
+\hypertarget{spectral-reflectance}{%
+\subsubsection{\texorpdfstring{\textbf{2.1. Spectral Reflectance}
+}{2.1. Spectral Reflectance }}\label{spectral-reflectance}}
+
+\begin{quote}
+Spectral reflectance is a fundamental concept in the study of how
+surfaces interact with light. With varied kinds of surfaces, we receive
+various colors or wavelengths. Different surfaces interact with the
+sunlight in unique ways. This interaction can involve either reflecting
+the sunlight or absorbing it, and it all hinges on various factors. This
+behavior depends mainly on the factors' material \textsuperscript{(5)}.
+Different materials have distinct properties that influence how they
+respond to sunlight. Additionally, the physical and chemical state of
+the material also takes part in affecting the reflectance - for example,
+a surface that is smooth and polished might reflect more light compared
+to a rough and textured surface.
+
+The environment also matters. The reflectance of a surface tells us how
+well it bounces back the sun's energy. The angle at which the sunlight
+strikes the surface, the direction from which it comes, and even the
+polarization of the light, all contribute to how the surface interacts
+with the sunlight. In short, reflectance is a measure of how effective a
+surface is at sending back radiant energy or we can understand it as
+what fraction of the sunlight is redirected at the surface boundary.
+
+Basically, reflectance is influenced by a material's electric properties
+and how it responds to the electromagnetic field of light. We can get a
+comprehensive view of how the surface reflects light by factors such as
+wavelengths (or frequency) of the light, the polarization, and the angle
+at which it hits the surface. \textsuperscript{(6)} Reflectance across
+different wavelengths is the creation of a reflectance spectrum. This
+spectrum outlines how the surface behaves with varying colors of light.
+This can be particularly useful in determining the amount of P
+concentration, K concentration, and Chlorophyll in rice leaves based on
+how they reflect light with different wavelengths for each
+concentration.
+
+\includegraphics[width=4.61592in,height=3.12691in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image11.png}
+\end{quote}
+
+\hypertarget{figure-1---spectral-reflectance-signature-of-healthy-vegetation-dry-soil-gray-grass-litter-water-and-snow-18}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 1} - Spectral reflectance
+signature of healthy vegetation, dry soil, gray grass litter, water, and
+snow
+\textsuperscript{(18)}}{Figure 1 - Spectral reflectance signature of healthy vegetation, dry soil, gray grass litter, water, and snow (18)}}\label{figure-1---spectral-reflectance-signature-of-healthy-vegetation-dry-soil-gray-grass-litter-water-and-snow-18}}
+
+\hypertarget{po2.2-phosphorus-concentration}{%
+\subsubsection{\texorpdfstring{\textbf{Po2.2 Phosphorus
+concentration}}{Po2.2 Phosphorus concentration}}\label{po2.2-phosphorus-concentration}}
+
+\begin{quote}
+Phosphorus (P) \textsuperscript{(19)} is an important nutrient for
+plants that supports root growth, energy production, storage, and
+transfer, and produces flowers and fruits. The lack of P can affect
+negatively the growth and overall health of plants.
+\end{quote}
+
+\hypertarget{potassium-concentration}{%
+\subsubsection{\texorpdfstring{\textbf{2.3. Potassium
+concentration}}{2.3. Potassium concentration}}\label{potassium-concentration}}
+
+\begin{quote}
+Potassium (K) is an essential nutrient for plant growth and development.
+It plays an irreplaceable role in the physiological processes within
+plants. It helps control tiny openings and closing pores called stomata
+on the surface of the leaves. It also helps move water and nutrients
+inside plants. \textsuperscript{(20)}
+\end{quote}
+
+\hypertarget{chlorophyll}{%
+\subsubsection{\texorpdfstring{\textbf{2.4. Chlorophyll}
+}{2.4. Chlorophyll }}\label{chlorophyll}}
+
+\begin{quote}
+Chlorophyll is a plant's special reaction that takes part in
+photosynthesis. It plays an important role in the process of
+photosynthesis which is how plants convert light energy into chemical
+energy. Chlorophyll's green color comes from its ability to absorb light
+in the blue and red parts of the electromagnetic spectrum while
+reflecting green. \textsuperscript{(3)}
+
+Chlorophyll-A is a special kind of chlorophyll. It grabs most of the
+energy from violet-blue and orange-red light but it is not very good at
+catching green light. Instead of reflecting green light, it mostly uses
+other colors. Chlorophyll-A is the main pigment that helps plants make
+food from light. \textsuperscript{(4)}
+\end{quote}
+
+\hypertarget{regression-analysis}{%
+\subsubsection{\texorpdfstring{ \textbf{2.5. Regression
+Analysis}}{ 2.5. Regression Analysis}}\label{regression-analysis}}
+
+\begin{quote}
+Regression Analysis in the field of Machine Learning is a fundamental
+tool that helps computers learn and predict outcomes. It helps computers
+understand the patterns and connections between different variables.
+Based on past data, it allows computers to predict the future. It
+predicts continuous/real values such as temperature, age, salary, price,
+etc\ldots Regression analysis contains various algorithms, such as
+linear regression, polynomial regression, and more, each suited for
+different types of data and models. The goal is to find the best-fitting
+function or line that minimizes the error between the predicted values
+and the actual target values, allowing accurate predictions in each
+application.
+
+\includegraphics[width=4.50876in,height=3.38157in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image1.png}
+\end{quote}
+
+\hypertarget{figure-2---the-scatter-plot-shows-the-relationship-between-the-dependent-variable-and-independent-variable-7}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 2} - The scatter plot shows
+the relationship between the dependent variable and independent variable
+\textsuperscript{(7)}}{Figure 2 - The scatter plot shows the relationship between the dependent variable and independent variable (7)}}\label{figure-2---the-scatter-plot-shows-the-relationship-between-the-dependent-variable-and-independent-variable-7}}
+
+\hypertarget{principal-component-analysis}{%
+\subsubsection{\texorpdfstring{\textbf{2.6. Principal Component
+Analysis}}{2.6. Principal Component Analysis}}\label{principal-component-analysis}}
+
+\begin{quote}
+Principal Component Analysis (PCA) is a helpful tool when dealing with
+big datasets with a large number of features. It helps us understand the
+data better by simplifying it. What PCA tries to do is take a bunch of
+information and figure out what parts are really important and what we
+can ignore. This makes data easier to understand and visualize. It's
+used in various fields, such as genetics and climate science, to make
+complex data simpler and more useful. \textsuperscript{(8)}
+
+This is how the PCA works step-by-step:
+
+Step 1: Standardization
+
+In this step, the goal is to standardize the variables to have the same
+impact on the analysis by their ranges. This is a necessary step when
+PCA. If some variables have much larger ranges, they can unfairly
+dominate the results. Standardizing involves adjusting data to a common
+scale by subtracting the average and dividing by the standard deviation
+for each value of each variable.
+\end{quote}
+
+\(z = \frac{value - mean}{standard\ deviation}\)
+
+\begin{quote}
+Step 2: Covariance matrix computation
+
+This step is to find connections between variables by comparing how they
+change from their average to each other. This helps spot repeated info.
+We use the covariance matrix for this
+\end{quote}
+
+\(cov(X,Y) = \ \frac{1}{n}\ \left( X - \ \underline{X} \right)\left( Y - \ \underline{Y} \right)\)
+
+\begin{quote}
+Where:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  cov(X, Y) is the covariance between X \& Y variables
+  \end{quote}
+\item
+  \begin{quote}
+  x \& y are members of X and Y variables
+  \end{quote}
+\item
+  \begin{quote}
+  \(\underline{x}\) and\(\ \underline{y}\) are mean of X \& Y variables
+  \end{quote}
+\item
+  \begin{quote}
+  n is the number of members
+  \end{quote}
+\end{itemize}
+
+\begin{quote}
+It's a chart that shows how variables connect based on their changes.
+For example, in 3D data with x, y, and z variables, the covariance
+matrix is a 3x3 grid.
+
+\includegraphics[width=3.14583in,height=0.82188in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image8.png}
+
+The diagonal of the matrix shows each variable's variance because a
+variable's covariance with itself is its variance (Cov(a, a)=Var(a)).
+Moreover, due to the commutative property of covariance (Cov(a,b)=Cov(b,
+a)), the covariance matrix is symmetric which means that the upper and
+lower triangular sections mirror each other across the main diagonal.
+
+Step 3: Compute the Eigenvectors and Eigenvalues of the covariance
+matrix to identify the principal components
+
+An Eigenvector is a non-zero vector that changes only by a constant
+factor when a linear transformation is applied to it and the eigenvalues
+are the scaling factor. An eigenvalue always comes in pairs with an
+eigenvector and these numbers are equal to the number of dimensions of
+the data.
+\end{quote}
+
+\(Av = \ \lambda v\)
+
+\begin{itemize}
+\item
+  \begin{quote}
+  A is the matrix
+  \end{quote}
+\item
+  \begin{quote}
+  V is a special vector
+  \end{quote}
+\item
+  \begin{quote}
+  \(\lambda\ \)is an eigenvalue
+  \end{quote}
+\end{itemize}
+
+\begin{quote}
+The main key point of this step is organizing data into principal
+components to reduce dimensional while retaining information. It means
+that it will eliminate the components with low information and take the
+rest as the new variables. Principal components represent the directions
+within the data with the most variance. The eigenvectors of the
+covariance matrix represent the key directions along which there is the
+highest variance or as we can say the most information. These special
+directions actually are what we call Principal Components. When we
+arrange the eigenvectors based on the eigenvalues, from the highest to
+the lowest, we can get the order of principal components by their
+significance.
+
+Step 4: Feature vector
+
+By computing and sorting eigenvectors by their eigenvalues, we identify
+principal components in order of importance. The feature vector is a
+matrix formed from the chosen eigenvectors, serving as the first step in
+dimensionality reduction. Selecting p eigenvectors out of n reduces the
+dataset to p dimensions.
+
+Step 5: Recast the data along the principal components axes
+\end{quote}
+
+\(FinalDataSet = {FeatureVector}^{T}*\ {StandardizedOriginalDataSet}^{T}\)
+
+\begin{quote}
+In this final step, the target is to use the feature vector created from
+the covariance matrix's eigenvectors to reshape the data from its
+original orientation to the principal components. This transformation is
+achieved through a matrix multiplication which contains the transpose of
+the original dataset and the transpose of the feature vector.
+\end{quote}
+
+\hypertarget{machine-learning}{%
+\subsubsection{\texorpdfstring{\textbf{2.7. Machine
+Learning}}{2.7. Machine Learning}}\label{machine-learning}}
+
+\hypertarget{ridge}{%
+\paragraph{\texorpdfstring{\textbf{2.7.1.
+Ridge}}{2.7.1. Ridge}}\label{ridge}}
+
+\begin{quote}
+Ridge regression is also a technique used in linear regression, the same
+as lasso, which is a tool that helps fix tuning models when dealing with
+closely related data, called a multicollinearity problem.
+\textsuperscript{(9)} It applies L2 regularization to handle this. When
+data has multicollinearity, standard least-square techniques stay
+unbiased, but variation grows, which leads to substantial differences
+between predicted parameter estimation. To deal with this, ridge
+regression adds some bias to improve the accuracy with which parameters
+are estimated.
+
+The cost function for ridge regression can be performed like this:
+
+\(J(\theta) = \frac{1}{2m}\sum_{i=1}^{m}((h_{\theta}(x^{(i)} - {y^{(i)})}^{2} + \lambda\sum_{j=1}^{m}\theta_{j}^{2})\)
+
+where:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \(J(\theta)\): cost function,
+  \end{quote}
+\item
+  \begin{quote}
+  \(m\): number of the training set,
+  \end{quote}
+\item
+  \begin{quote}
+  \(h_{\theta}(x^{(i)}\)\textbf{)}: predicted output value of
+  i\textsuperscript{th} training examples,
+  \end{quote}
+\item
+  \begin{quote}
+  \(y^{(i)}\): real output value of i\textsuperscript{th} training
+  examples,
+  \end{quote}
+\item
+  \begin{quote}
+  \(\lambda\): regularization term,
+  \end{quote}
+\item
+  \begin{quote}
+  \(n\): number of features,
+  \end{quote}
+\item
+  \begin{quote}
+  \(\theta_{j}\): weight of j\textsuperscript{th} feature.
+  \end{quote}
+\end{itemize}
+
+\begin{quote}
+Ridge regression works best when having more predicted variables than
+the observations in the data. This is especially useful in cases where
+the standard assumptions of linear regression might not be valid. It
+finds a middle ground between effectively capturing relationships within
+the data and preventing overfitting issues.
+\end{quote}
+
+\hypertarget{lasso}{%
+\paragraph{\texorpdfstring{\textbf{2.7.2.
+Lasso}}{2.7.2. Lasso}}\label{lasso}}
+
+\begin{quote}
+Lasso regression is a technique used in regression analysis. Like Ridge
+Regression, it is a way to shrink and select coefficients in linear
+regression models, especially with many predictors or multicollinearity.
+It adds a penalty based on absolute coefficient values ( L1
+regularization), which can precisely zero out some coefficients.
+Effectively performing feature selection. This prevents overfitting,
+simplifies models, and is great when only a subset of predictors is
+vital.
+
+\(J(\theta) = \frac{1}{2m}((h_{\theta}(x^{(i)} - {y^{(i)})}^{2} + \lambda\left| \theta_{j} \right|)\)
+
+where:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \(J(\theta)\): cost function,
+  \end{quote}
+\item
+  \begin{quote}
+  \(m\): number of the training set,
+  \end{quote}
+\item
+  \begin{quote}
+  \(h_{\theta}(x^{(i)}\)\textbf{)}: predicted output value of
+  i\textsuperscript{th} training examples,
+  \end{quote}
+\item
+  \begin{quote}
+  \(y^{(i)}\): real output value of i\textsuperscript{th} training
+  examples,
+  \end{quote}
+\item
+  \begin{quote}
+  \(\lambda\): regularization term,
+  \end{quote}
+\item
+  \begin{quote}
+  \(n\): number of features,
+  \end{quote}
+\item
+  \begin{quote}
+  \(\theta_{j}\): weight of j\textsuperscript{th} feature.
+  \end{quote}
+\end{itemize}
+
+\begin{quote}
+What makes Lasso different from Ridge is that while Lasso can lead to
+zero coefficients, Ridge keeps predictors, although their magnitude is
+reduced. By ignoring some specific predictors, Lasso is best for its
+simplicity and clarity, whereas Ridge is well-suited for situations
+where numerous influential predictors are involved
+\end{quote}
+
+\hypertarget{elasticnet}{%
+\paragraph{\texorpdfstring{\textbf{2.7.3.
+ElasticNet}}{2.7.3. ElasticNet}}\label{elasticnet}}
+
+\begin{quote}
+ElasticNet is a powerful and flexible regularization method which have
+both characteristics of Lasso and Ridge regression, it merges the
+capability of dealing with high-dimensionality and the need for robust
+regularization techniques which means that ElasticNet is the combination
+of L1 and L2 regularization. By mixing L1 and L2 regularization, it aims
+to strike a balance between simplicity and retaining relevant
+predictors. ElasticNet provides two parameters, alpha, and lambda, to
+balance these two types of regularization. The alpha parameter controls
+the mix of L1 and L2 regularization, allowing us to emphasize one over
+the other or find an equilibrium between the two. The lambda parameter
+controls the overall strength of regularization, controlling how much
+the coefficients shrink
+
+\(J(\theta) = \frac{1}{2m}((h_{\theta}(x^{(i)} - {y^{(i)})}^{2} + \lambda_{1}\theta_{j}^{2} + \lambda_{2}\theta_{j}^{2})\)
+
+where:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \(J(\theta)\): cost function,
+  \end{quote}
+\item
+  \begin{quote}
+  \(m\): number of the training set,
+  \end{quote}
+\item
+  \begin{quote}
+  \(h_{\theta}(x^{(i)}\)\textbf{)}: predicted output value of
+  i\textsuperscript{th} training examples,
+  \end{quote}
+\item
+  \begin{quote}
+  \(y^{(i)}\): real output value of i\textsuperscript{th} training
+  examples,
+  \end{quote}
+\item
+  \begin{quote}
+  \(\lambda_{1}\)\textbf{,} \({\ \lambda}_{2}\): regularization terms,
+  \end{quote}
+\item
+  \begin{quote}
+  \(n\): number of features,
+  \end{quote}
+\item
+  \begin{quote}
+  \(\theta_{j}\): weight of j\textsuperscript{th} feature.
+  \end{quote}
+\end{itemize}
+
+\hypertarget{decision-tree}{%
+\paragraph{\texorpdfstring{\textbf{2.7.4. Decision
+Tree}}{2.7.4. Decision Tree}}\label{decision-tree}}
+
+\begin{quote}
+Decision tree is a versatile algorithm used for classification and
+regression tasks.It operates by iteratively splitting data into
+homogenous subsets based on feature conditions, aiming for simplicity
+and accuracy. However, as trees grow, they risk overfitting, so pruning
+is included to remove less important branches. To enhance accuracy,
+decision trees can also form ensembles like random forests, where
+multiple trees work together for better predictors, especially when they
+are uncorrelated. This approach aligns with the principle of simplicity,
+adding complexity only when necessary to achieve accurate results.
+
+\includegraphics[width=5.27726in,height=3.17228in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image13.png}
+\end{quote}
+
+\hypertarget{figure-3---workflow-diagram-of-decision-tree-10}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 3} - Workflow diagram of
+Decision Tree
+\textsuperscript{(10)}}{Figure 3 - Workflow diagram of Decision Tree (10)}}\label{figure-3---workflow-diagram-of-decision-tree-10}}
+
+\begin{quote}
+The decision tree starts with data preparation, where a dataset with
+input features and a target variable is collected. It selects initial
+features as the root node, splits the data based on feature values, and
+calculates the reduction at each step. When the process chooses the best
+split, which will become the first split of the tree, it will repeat
+from the beginning to this step. To make predictions, it goes from
+branches based on feature values to reach leaf nodes, which contain
+target value predictions that have averaged. After evaluation with
+metrics like MSE or R squared, it may apply pruning to refine the tree's
+structure.
+\end{quote}
+
+\hypertarget{random-forest}{%
+\paragraph{\texorpdfstring{\textbf{2.7.5. Random
+Forest}}{2.7.5. Random Forest}}\label{random-forest}}
+
+\begin{quote}
+Random forest is a technique that builds multiple decision trees and
+combines their predictions to improve accuracy and reduce overfitting.
+The Random Forest algorithm is an improvement of the bagging method when
+integrating both bagging and random features or the random subspace
+method, to deal with uncorrelated ensemble of decision trees. This
+technique will make sure that each decision tree in the forest is set
+for a different set of features, by randomly selecting a subset of
+features from the dataset.
+
+\includegraphics[width=4.58626in,height=3.70313in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image4.png}
+\end{quote}
+
+\hypertarget{figure-4---workflow-diagram-of-random-forest-11}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 4} - Workflow diagram of
+Random Forest
+\textsuperscript{(11)}}{Figure 4 - Workflow diagram of Random Forest (11)}}\label{figure-4---workflow-diagram-of-random-forest-11}}
+
+\begin{quote}
+The Random Forest algorithm runs through a bunch of systematic steps to
+create a predictive model. It starts with data preparation and then uses
+bootstrapping to create diverse subsets of the data. For each subset, it
+constructs a decision tree that contains information about the feature
+randomness, which means that there is only a random subset of features
+at each node for splitting. Predictions from these trees are combined
+through averaging for regression and voting for classification to get to
+the final prediction. The Random Forest model can be working great
+through parameter adjustments and evaluated using suitable metrics,
+while also giving a view of feature importance.
+
+Random Forest brings users several advantages such as their versatility
+and accuracy when handling diverse data types including binary,
+numerical, and categorical features, making them robust against outliers
+and nonlinear features. One of the most useful capabilities is its
+ability to balance errors in populations and unbalanced datasets,
+measuring feature importance is straightforward. However, they can be
+slower due to building many trees, limiting real-time use. The
+predictions rely on past data and may not work well with different
+ranges. Also, they are not easy to understand and the decisions cannot
+be explained easily.
+\end{quote}
+
+\hypertarget{svr}{%
+\paragraph{\texorpdfstring{\textbf{2.7.6. SVR}
+}{2.7.6. SVR }}\label{svr}}
+
+\begin{quote}
+Support Vector Regression (SVR) is a specialized type of support vector
+machine (SVM) used for regression tasks, targeted to predict continuous
+output values based on given input data. It can be used both for linear
+and non-linear kernels, with a simple dot product between input vectors
+for linear kernels while capturing more complex data patterns for
+non-linear kernels. Choosing between linear and non-linear is based on
+data characteristics and task complexity. SVR is based on SVM
+principles, with the same main role being error minimization while
+finding a hyperplane with a margin that allows for some error.
+
+This minimization process for the parameter `w' in the equation is akin
+to maximizing the margin:
+\end{quote}
+
+\({\min\left| |w| \right|}^{2} + C(\xi_{i}^{+} + \ \xi_{i}^{-})\ \ \)
+
+\begin{quote}
+In order to reduce this error, we utilize the following equation, where
+the summation component represents an empirical error.
+
+To minimize the error, we use the following equation:
+\end{quote}
+
+\(f(x) = \ \left( \alpha_{i}^{*} + \ \alpha_{i} \right)K\ \left( x,x_{i} \right) + B\)
+
+\begin{quote}
+And to calculate the kernel K we can use the following equation:
+\end{quote}
+
+\(K\left( x,x_{i} \right) = \ \gamma\left( x*\ x_{i} + 1 \right)^{d}\ \)
+
+\begin{quote}
+When comparing SVR with other algorithms such as Linear Regression,
+ElasticNet, it seems to be better. This one is well-suited for a large
+number of variables because of its capability to be attributed to its
+refines. It is also outstanding with its flexibility in dealing with
+geometric, transmission, data generalization, and kernel-related
+functionalities. The sensitivity to noise is intimately related to the
+quality of training data. SVR works best with high-dimensional
+regression problems even when there are more feature metrics than
+samples. To ensure a fair and balanced evaluation of all features, we
+need to implement various standardization techniques.
+\end{quote}
+
+\hypertarget{bayesian-ridge}{%
+\paragraph{\texorpdfstring{\textbf{2.7.7. Bayesian
+Ridge}}{2.7.7. Bayesian Ridge}}\label{bayesian-ridge}}
+
+\begin{quote}
+Bayesian linear regression predicts the mean of one variable using a
+weighted sum of others. Its goal is to calculate the posterior
+probability of regression coefficients and other distribution parameters
+based on observed predictors. Bayesian regression suits datasets with
+sparse or poorly distributed data, as it derives the posterior
+distribution of model parameters rather than estimating them directly.
+
+\(p(y\ |\ X,w,a)\  = \ N\ (y\ |\ X_{w}{,a)}_{}\)
+
+Bayesian Ridge regression, which is the most widely used type of
+Bayesian regression, models regression problems by incorporating
+probability estimates. This helps account for uncertainty in
+predictions, making it useful for situations with limited data or noise.
+The prior for the coefficients \(w\) is given by spherical Gaussian as
+follows.
+
+\(p(w\ |\ \lambda)\  = \ N\ (w\ |\ 0,\ \lambda^{- 1}I_{p}\))
+\end{quote}
+
+\hypertarget{lasso-lars}{%
+\paragraph{\texorpdfstring{\textbf{2.7.8. Lasso
+Lars}}{2.7.8. Lasso Lars}}\label{lasso-lars}}
+
+\begin{quote}
+Lasso Lars regression is the mixture of two techniques: Lasso and Lars.
+Lasso is primarily used for feature selection and addressing
+multicollinearity in linear regression models. On the other hand, Lars
+is an algorithm used for efficiently selecting variables in a
+high-dimensional dataset. Combining these two techniques, Lasso Lars
+inherits the feature selection capabilities of Lasso and the efficient
+variable selection process of Lars. This makes it particularly well
+suited for linear regression tasks involving datasets with many
+predictor variables or situations where multicollinearity is present.
+
+It starts with all coefficients at zero and selects predictors based on
+their correlation with the target variable. As it progresses, it employs
+Lasso's feature selection, encouraging some coefficients to become zero,
+simplifying the model. This approach excels in handling high-dimensional
+data efficiently while building interpretable and accurate linear
+regression models.
+\end{quote}
+
+\hypertarget{lars}{%
+\paragraph{\texorpdfstring{\textbf{2.7.9.
+Lars}}{2.7.9. Lars}}\label{lars}}
+
+\begin{quote}
+Least Angle Regression (Lars) is used for feature selection and model
+building, which is specially designed for high dimensional datasets. Its
+main task is to select and incorporate the most correlated contributions
+into the model without overfitting. To fit the models, we start by
+normalizing all values. Then we choose the most highly correlated
+variable with the residual and adjust the regression line. This process
+continues until we have used all data or created a satisfactory model.
+
+\includegraphics[width=3.68229in,height=2.80917in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image10.png}
+\end{quote}
+
+\hypertarget{figure-5---lars-skrinkage-12}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 5} - Lars Skrinkage
+\textsuperscript{(12)}}{Figure 5 - Lars Skrinkage (12)}}\label{figure-5---lars-skrinkage-12}}
+
+\begin{quote}
+With:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \(y_{2}\) is the projection of \(y\) onto L( \(x_{1},\) \(x_{2}\))
+  \end{quote}
+\item
+  \begin{quote}
+  Two covariates x\textsubscript{1} and x\textsubscript{2} and the space
+  L(x\textsubscript{1,} x\textsubscript{2}) that is spanned by them
+  \end{quote}
+\item
+  \begin{quote}
+  Start at \(\mu_{0} = 0\)
+  \end{quote}
+\end{itemize}
+
+\begin{quote}
+Firstly, we start with all coefficients as zero and find the predictor
+variable xj that correlates most with the target variable y. Then we
+increase the coefficients Bj in the direction of this correlation until
+another predictor variable xk with equal or higher correlation is found.
+The coefficients (Bj, Bk) are adjusted so that they have the same angle
+with xj and xk. This process continues until all predictor variables are
+included in the model.
+\end{quote}
+
+\hypertarget{boosting}{%
+\paragraph{\texorpdfstring{\textbf{2.7.10.
+Boosting}}{2.7.10. Boosting}}\label{boosting}}
+
+\begin{quote}
+Boosting is a powerful ensemble meta-algorithm in machine learning that
+reduces bias and variance in supervised learning. It transforms weak
+learners into strong ones by combining them iteratively and adjusting
+their weights based on accuracy. Boosting emerged from the idea of
+enhancing weak learners to create strong ones. Boosting methods assume
+training weak classifiers sequentially, making it an essential concept
+in machine learning and statistics. By each stage of adding, a process
+called `re-weighting', misclassified data points to gain higher weight,
+allowing weak learners to focus on them. There are a large number of
+types of boosting algorithms but in this project, we are supposed to use
+just the most popular which are AdaBoost, XGBoost, LGBM, CatBoost, and
+GradientBoost.
+
+\includegraphics[width=5.34971in,height=2.51151in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image7.png}
+\end{quote}
+
+\hypertarget{figure-6---workflow-of-boosting-algorithm}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 6} - Workflow of Boosting
+algorithm}{Figure 6 - Workflow of Boosting algorithm}}\label{figure-6---workflow-of-boosting-algorithm}}
+
+\begin{quote}
+The boosting algorithm contains several advantages, including improved
+accuracy achieved by combining predictions from weak models, robustness
+against overfitting by giving more weight to misclassified data points,
+and effective handling of imbalanced datasets. However, boosting
+algorithms also have some limitations which can be named as the
+sensitivity which will make them less suitable when working with
+real-time applications. Unlike others focused on high-quality
+predictions, boosting algorithms rely on weak models, each addressing
+the predecessor's weaknesses.
+\end{quote}
+
+\hypertarget{gradientboosting}{%
+\paragraph{\texorpdfstring{\textbf{2.7.10.1.
+GradientBoosting}}{2.7.10.1. GradientBoosting}}\label{gradientboosting}}
+
+\begin{quote}
+GradientBoostung is a robust boosting algorithm that combines weak
+learners into strong ones by training each new model to minimize the
+loss function of the previous model using gradient descent. In each
+iteration, it calculates the gradient of the loss function regarding the
+predictions of the current ensemble and trains a new weak model to
+minimize this gradient. This method often uses decision trees as weak
+learners to transform the data. The iterative procedure involves
+computing residuals, which represent the difference between predictions
+and actual values, and training models to map features to these
+residuals. These steps are to improve the overall predictive performance
+of the model.
+
+We can express how GradientBoosting works through these steps:
+
+Step 1: Assume X and Y are the input and target with N samples. The goal
+is to find a function f(x) that maps input features X to target
+variables Y. The loss function quantifies the difference between actual
+and predicted values
+
+\(L(f) = \ L(y_{i},\ f\left( x_{i} \right))\)
+
+Step 2: Focuses on minimizing L(f) with respect to f
+\end{quote}
+
+\({\widehat{f}}_{0}(x) = argmin\ f\ \ L(f) = \ argmin\ f\ \ L(y_{i},\ f\left( x_{i} \right))\)
+
+\begin{quote}
+In our gradient boosting algorithm with M stages, we improve the model
+f\textsubscript{m} by introducing additional estimators denoted as
+\(h_{m}\), where m ranges from 1 to M
+\end{quote}
+
+\(\widehat{y_{i}} = \ F_{m + 1}\left( x_{i} \right) = \ F_{m}\left( x_{i} \right) + \ h_{m}\left( x_{i} \right)\)
+
+\begin{quote}
+Step 3: Steepest Descent
+\end{quote}
+
+\(g_{im} = \  - {\lfloor\frac{\partial L(y_{i},\ f\left( x_{i} \right))}{\partial f(x_{i})}\rfloor}_{f\left( x_{i} \right) = \ f_{m - 1}\ (x_{i})}\)
+
+\begin{quote}
+With the M stage of Gradient Boosting, the Steepest Descent technique is
+used to determine the \(\ h_{m}\) which is an important component. This
+is the combination of 2 elements: constant termed as step length, and
+the gradient of the loss function \(g_{m}\). The key point of the step
+length is to scale the gradient of the loss function L(f).
+
+Step 4: we update the solution iteratively using
+\end{quote}
+
+\(f_{m}(x) = \ f_{m - 1}(x) + \left( argmin\ h_{m \in H}\ \ \left\lbrack L\left( y_{i},\ f_{m - 1}\left( x_{i} \right) + \ h_{m}\left( x_{i} \right) \right) \right\rbrack \right)(x)\)
+
+\begin{quote}
+This process continues for M trees, refining the model at each stage to
+achieve a more accurate prediction. The solution can also be written as:
+\end{quote}
+
+\(f_{} = \ f_{m - 1} - \ \rho_{m}g_{m}\)
+
+\hypertarget{adaptive-boosting-adaboosting}{%
+\paragraph{\texorpdfstring{\textbf{2.7.10.2. Adaptive Boosting (
+AdaBoosting )}
+}{2.7.10.2. Adaptive Boosting ( AdaBoosting ) }}\label{adaptive-boosting-adaboosting}}
+
+\begin{quote}
+AdaBoost, short for Adaptive Boosting is a machine learning algorithm
+that combines the outputs of weak learners to create a strong
+classifier. It is known for its adaptability and the ability to handle
+various base learners including weak ones like decision stumps or even
+strong learners like deep decision trees, making it versatile. AdaBoost
+adapts by giving more emphasis to instances that previous learners
+misclassified, reducing the risk of overfitting. It assigns different
+weights to errors, influencing the importance of weak learners in the
+final model.
+
+This is an example of how AdaBoost works through a pseudocode:
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1232}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.8768}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Input:}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Data set
+\(D = \left\{ \left( x_{1},\ y_{1} \right),\ \left( x_{2},\ y_{2} \right),\ \ldots\ \left( x_{m},\ y_{m} \right) \right\};\)
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Base learning algorithm \(L\);
+\end{minipage} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Output:} \(H(x) = sign(\alpha_{t}h_{t}(x)\)
+\end{minipage}} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Number of learning round T.
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Process:}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\(D_{1}(i) = 1/m\) \% Initialize the weight distribution
+\end{minipage}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+for \(t = 1,\ \ldots\ ,\ T\);
+\end{minipage}} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(h_{t} = \ L\left( D,\ D_{t} \right);\ \ \) \% Train a weak learner
+\(h_{t}\) from D using distribution \(D_{t}\)
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\epsilon_{t} = \ \Pr_{i\sim Di}\lbrack h_{t}(x_{i}\  \neq \ y_{i})\rbrack;\)
+\% Measure the error of \(h_{t}\)
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\alpha_{t} = \ \frac{1}{2}\ln\ln\ \left( \frac{1 - \ \epsilon_{t}}{\epsilon_{t}} \right)\ ;\)
+\% Determine the weight of the \(h_{t}\)
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(D_{t + 1} = \ \frac{D_{t}(i)}{Z_{t}}\  \times \{\exp\ \left( - \alpha_{t} \right)\ \ if\ h_{t}\left( \ x_{i} \right) = \ y_{i}\ exp\ \left( \alpha_{t} \right)\ \ if\ h_{t}\left( \ x_{i} \right)\  \neq \ y_{i}\ \ \ \ \)
+
+\(= \ \frac{D_{t}(i)exp( - \alpha_{t}y_{i}h_{t}(x_{i})}{Z_{t}}\) \%
+update the distribution, where \(Z_{t}\) is
+
+\% a normalization factor which enables \(D_{t + 1}\) be a distribution
+\end{minipage} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+end.
+\end{minipage}} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+AdaBoost offers several advantages, notably its ease of use with minimal
+parameter tuning, in contrast to more complex algorithms like SVM.
+However there are some disadvantages, AdaBoost's progressive learning
+process demands high-quality data as it's sensitive to noise and
+outliers.
+\end{quote}
+
+\hypertarget{extreme-gradient-boosting-xgboost}{%
+\paragraph{\texorpdfstring{\textbf{2.7.10.3. Extreme Gradient Boosting (
+XGBoost
+)}}{2.7.10.3. Extreme Gradient Boosting ( XGBoost )}}\label{extreme-gradient-boosting-xgboost}}
+
+\begin{quote}
+XGBoost, short for Extreme Gradient Boosting, is a versatile and
+powerful machine-learning library designed for solving regression,
+classifications, and ranking problems. XGBoost relies on Decision Trees
+as its core component and employs ensemble learning methods such as
+gradient boosting. Decision trees, which use a series of feature-based
+questions to predict outcomes, can be employed for regression on
+predicting numeric values.
+
+Gradient Boosting Decision Tree (GBDT) is an ensemble method that is
+similar to random forest but differs in how it constructs and combines
+trees. How GBDT works is to construct a sequence of shallow trees. Each
+new tree focuses on correcting the errors of the previous ones.
+
+Below is the pseudo-code of how XGBoost works:
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.0620}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.9380}}@{}}
+\toprule()
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Input:}
+
+1. Given training data from the instance space
+
+\(S = \left\{ \left( x_{1},\ y_{1} \right),\ \left( x_{2},\ y_{2} \right),\ \ldots\ \left( x_{m},\ y_{m} \right) \right\}\)
+where \(x_{i}\) \(\epsilon\ X\) and \(y_{i}\ \epsilon\ y\) = \{-1, +1\}
+
+2. Initialize the distribution \(D_{1}(i) = \ \frac{1}{m}\)
+\end{minipage}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Process:}
+\end{minipage}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+for t = 1, \ldots, T: do
+\end{minipage}} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Train a weak learner
+\(h_{t}\ :X\  \rightarrow R\ using\ distribution\ D_{t}\)
+
+Determine weight \(\alpha_{t}\) of \(h_{t}\)
+
+Update the distribution over the training set
+
+\(D_{i + 1}(i) = \ \frac{D_{t}(i)exp( - \alpha_{t}y_{i}h_{t}(x_{i})}{Z_{t}}\)
+
+where \(Z_{t}\) is a normalization factor chosen so that \(D_{i + 1}\)
+will be a distribution
+\end{minipage} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+end.
+\end{minipage}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Output:} \(f(x) = \ H(x) = sign(\alpha_{t}h_{t}(x)\)
+\end{minipage}} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+XGBoost advantages include its strong track record, scalability,
+customizability, built-in support for missing values, and feature
+interpretability. However, it also comes with computational complexity,
+potential overfitting issues, hyperparameter tuning challenges, and
+memory requirements, making it difficult to fine-tune its parameters for
+optimal performance.
+\end{quote}
+
+\hypertarget{categorical-boosting-catboost}{%
+\paragraph{\texorpdfstring{\textbf{2.7.10.4. Categorical Boosting (
+CatBoost
+)}}{2.7.10.4. Categorical Boosting ( CatBoost )}}\label{categorical-boosting-catboost}}
+
+\begin{quote}
+CatBoost is an open-source boosting library designed for tackling
+regression and classification problems that involve a vast number of
+independent features. What makes CatBoost extended with others Boosting
+is its ability to work directly with categorical data and its improved
+implementation of gradient boosting, enhancing speed and performance.
+CatBoost can deal with a mix of categorical and non-categorical
+features, Moreover, CatBoost includes symmetric trees, when all decision
+nodes at the same depth level have the same split criteria, improving
+its efficiency. This advance is built based on decision tree and
+gradient boosting principles. The idea is to sequentially combine weak
+models to construct a predictive model. By fitting gradient boosting
+over the decision trees sequentially, it has learned from the errors of
+former trees and reduced prediction errors. This process continues until
+the chosen loss function can not be reduced anymore.
+
+Instead of following traditional gradient boosting models, CatBoost uses
+another strategy for constructing decision trees. It uses the oblivious
+trees, where nodes at the same level evaluate the same predictor with
+the same condition, allowing the calculation of leaf indices using
+bitwise operations. This will not only simplify the fitting process and
+improve CPU efficiency but also can pretend to be a regularization
+method to achieve optimal solutions and avoid overfitting.
+
+What makes CatBoost a utility is that it provides a wide range of
+features that contain native support for categorical characteristics,
+easy management of missing data, automated feature scaling, and an
+integrated cross-validation technique for tuning hyperparameters. It
+also provides the flexibility of using both L1 and L2 regularization
+methods to deal with the overfitting issue.
+
+\includegraphics[width=6.03496in,height=1.1205in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image14.png}
+\end{quote}
+
+\hypertarget{figure-7---illustration-of-how-decision-tree-works-in-catboost-13}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 7} - Illustration of how
+decision tree works in CatBoost
+\textsuperscript{(13)}}{Figure 7 - Illustration of how decision tree works in CatBoost (13)}}\label{figure-7---illustration-of-how-decision-tree-works-in-catboost-13}}
+
+\begin{quote}
+CatBoost could be the best choice when dealing with small datasets and
+it has great capability when working with categorical features, as it
+eliminates the need for extensive feature conversions.
+\end{quote}
+
+\hypertarget{lgbm}{%
+\paragraph{\texorpdfstring{\textbf{2.7.10.5
+LGBM}}{2.7.10.5 LGBM}}\label{lgbm}}
+
+\begin{quote}
+Light Gradient Boosting Machine, which can be shorted as LGBM, is an
+open-source gradient boosting framework developed by Microsoft. Its main
+idea is to address some of the limitations of traditional
+gradient-boosting methods.
+
+What makes LGBM different from other boosting is that it grows trees by
+a leaf-wise growth strategy while other algorithms expand trees in a
+broad way. In the level-wise approach, all the leaf nodes at a
+particular depth are expanded simultaneously in a breadth-first manner.
+LGBM selects the leaf node with the maximum delta loss to grow, focusing
+on nodes that can most efficiently reduce the loss. This leaf-wise
+strategy often results in fewer levels and, therefore, a shallower tree,
+which can lead to faster training times and reduced memory usage.
+
+\includegraphics[width=4.32292in,height=2.01611in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image9.png}
+\end{quote}
+
+\hypertarget{figure-8---illustration-of-leaf-wise-tree-grow-architecture-of-lgbm-14}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 8} - Illustration of Leaf
+Wise Tree Grow Architecture of LGBM
+(14)}{Figure 8 - Illustration of Leaf Wise Tree Grow Architecture of LGBM (14)}}\label{figure-8---illustration-of-leaf-wise-tree-grow-architecture-of-lgbm-14}}
+
+\begin{quote}
+LGBM offers faster training speed, lower memory usage, and improved
+accuracy, making it suitable for large datasets and complex models. LGBM
+supports parallel, distributed, and GPU learning, enhancing its
+performance, efficient memory handling, and scalability making it become
+the best
+\end{quote}
+
+\hypertarget{materials-and-scientific-methods}{%
+\subsection{\texorpdfstring{\textbf{3. Materials and Scientific
+Methods}}{3. Materials and Scientific Methods}}\label{materials-and-scientific-methods}}
+
+\hypertarget{data-description}{%
+\subsubsection{\texorpdfstring{\textbf{3.1. Data
+Description}}{3.1. Data Description}}\label{data-description}}
+
+\begin{quote}
+Working on this project, we are under the guidance of Dr. Tran Giang Son
+and his team. He and his team had divided a field into 3 different
+sections, each growing three different types of rice seeds and each
+section received varying nutrient amounts. These nutrients, represented
+as P, K, and Chlorophyll were applied in different percentages. To
+capture important information, they used a specialized divide to
+photograph three specific points in each area to measure spectral
+reflectance.
+
+Now, as part of our project, we assigned a folder containing two types
+of files: csv files and a set of sed files. With the csv file, the data
+is formatted by rows with each row corresponding to data in the sed
+file. Meanwhile, the sed files contain a large scale of information in
+machine details, date-time records, and most important thing, the data
+that aligns with the data rows in the csv file. Our job is to merge the
+data from these two files together to create a comprehensive and
+informative dataset.
+\end{quote}
+
+\hypertarget{structure-of-.sed-files-in-folder-spectral-reflectance-measurement}{%
+\paragraph{\texorpdfstring{\textbf{3.1.1. Structure of .sed files in
+folder Spectral reflectance
+measurement}}{3.1.1. Structure of .sed files in folder Spectral reflectance measurement}}\label{structure-of-.sed-files-in-folder-spectral-reflectance-measurement}}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  The number of .sed files: 260 files.
+  \end{quote}
+\end{itemize}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Name file:
+  \end{quote}
+\item
+  \begin{quote}
+  Types of name:
+  \end{quote}
+\item
+  \begin{quote}
+  Content in a .sed file:
+  \end{quote}
+\end{itemize}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Version: 2.3 {[}1.2.6250C{]}
+  \end{quote}
+\item
+  \begin{quote}
+  File Name
+  \end{quote}
+\item
+  \begin{quote}
+  Instrument: PSR-2500\_SN1726293 {[}2{]}
+  \end{quote}
+\item
+  \begin{quote}
+  Detectors: 512,0,256
+  \end{quote}
+\item
+  \begin{quote}
+  Measurement: REFLECTANCE
+  \end{quote}
+\item
+  \begin{quote}
+  Date
+  \end{quote}
+\item
+  \begin{quote}
+  Time
+  \end{quote}
+\item
+  \begin{quote}
+  Temperature (c)
+  \end{quote}
+\item
+  \begin{quote}
+  Battery Voltage
+  \end{quote}
+\item
+  \begin{quote}
+  Averages: 10,10
+  \end{quote}
+\item
+  \begin{quote}
+  Integration: 10,30,20,30
+  \end{quote}
+\item
+  \begin{quote}
+  Dark Mode: AUTO, AUTO
+  \end{quote}
+\item
+  \begin{quote}
+  Foreotopic: LENS\$ \{RADIANCE\}, LENS4 \{RADIANCE\}
+  \end{quote}
+\item
+  \begin{quote}
+  Radiometric Calibration: RADIANCE
+  \end{quote}
+\item
+  \begin{quote}
+  Units: W/m2 /sr/nm
+  \end{quote}
+\item
+  \begin{quote}
+  Wavelength Range: 350,2500
+  \end{quote}
+\item
+  \begin{quote}
+  Latitude
+  \end{quote}
+\item
+  \begin{quote}
+  Longtitude
+  \end{quote}
+\item
+  \begin{quote}
+  Altitude
+  \end{quote}
+\item
+  \begin{quote}
+  GPS Time
+  \end{quote}
+\item
+  \begin{quote}
+  Satellites
+  \end{quote}
+\item
+  \begin{quote}
+  Calibrated Reference Correction File: none
+  \end{quote}
+\item
+  \begin{quote}
+  Channels: 2151
+  \end{quote}
+\item
+  \begin{quote}
+  Columns {[}4{]}
+  \end{quote}
+\end{itemize}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Number of data in a .sed file: 2150 data, corresponding to wavelength
+  from 350-2500, each including:
+  \end{quote}
+\end{itemize}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Wavelength (Wvl)
+  \end{quote}
+\item
+  \begin{quote}
+  Reference Radian (Rad. (Ref.))
+  \end{quote}
+\item
+  \begin{quote}
+  Target Radian (Rad. (Target.))
+  \end{quote}
+\item
+  \begin{quote}
+  Reflect (Reflect.\%)
+  \end{quote}
+\end{itemize}
+
+\hypertarget{structure-of-data_mua1_2022.csv-file}{%
+\paragraph{\texorpdfstring{\textbf{3.1.2. Structure of
+DATA\_Mua1\_2022.csv
+file}}{3.1.2. Structure of DATA\_Mua1\_2022.csv file}}\label{structure-of-data_mua1_2022.csv-file}}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  There are 61 replicates, 55 replicates with 3 sub-replicates
+  \end{quote}
+\item
+  \begin{quote}
+  The number of data rows: 171
+  \end{quote}
+\item
+  \begin{quote}
+  Including:
+  \end{quote}
+\end{itemize}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Latitude
+  \end{quote}
+\item
+  \begin{quote}
+  Longitude
+  \end{quote}
+\item
+  \begin{quote}
+  Replicate, Sub-replicate
+  \end{quote}
+\item
+  \begin{quote}
+  Concentration of P, K (mg/kg)
+  \end{quote}
+\item
+  \begin{quote}
+  Chlorophyll-a
+  \end{quote}
+\end{itemize}
+
+\begin{quote}
+This is the table showing the nutrients statistics information:
+\end{quote}
+
+\hypertarget{figure-9---nutrients-statistics-description}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 9} - Nutrients' statistics
+description}{Figure 9 - Nutrients' statistics description}}\label{figure-9---nutrients-statistics-description}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2264}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1341}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1449}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1540}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1576}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1830}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Nutrients
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sample
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+St.Deviation
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Chlorophyll
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+171
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+41.84
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+33.0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+48.6
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+3.10
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+P concentration
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+171
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+4317.11
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1124.0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+7740.0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+805.68
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+K concentration
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+171
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+35975.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+12620.0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+59730.0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10578.94
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\hypertarget{scientific-methods}{%
+\subsubsection{\texorpdfstring{\textbf{3.2. Scientific
+Methods}}{3.2. Scientific Methods}}\label{scientific-methods}}
+
+\hypertarget{overall-framework}{%
+\paragraph{\texorpdfstring{\textbf{3.2.1. Overall
+Framework}}{3.2.1. Overall Framework}}\label{overall-framework}}
+
+\begin{quote}
+\includegraphics[width=5.80729in,height=1.87062in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image3.png}
+\end{quote}
+
+\hypertarget{figure-10---the-workflow-for-developing-the-model}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 10} - The workflow for
+developing the
+model}{Figure 10 - The workflow for developing the model}}\label{figure-10---the-workflow-for-developing-the-model}}
+
+\begin{quote}
+Firstly, we work with the Spectral reflectance measurement folder which
+contains 260 .sed files and each .sed file includes 2150 rows of
+information. In the preprocessing part, we match the data from .sed
+files to the data of Replicate and Sub-replicate in
+DATA\_MUA1\_2022.csv. After the preprocessing part, we can get an output
+.csv file of 168 rows and 2154 columns which has removed null data. The
+next step, the main work on this step is to find and study the dataset
+when splitting the dataset into the Train set and Test set. While
+working with models, after standardizing the dataset, we apply machine
+learning algorithms with hyperparameter tuning techniques to find the
+most suitable hyperparameter for each model. Because of the high
+dimension of the dataset, we also apply PCA for it and also try
+hyperparameter tuning with the after PCA dataset. This hyperparameter
+tuning is based on the target of satisfying the statistical metrics. We
+could see how well the model is by evaluating the models. Until we can
+find the best model based on the results through these metrics, the
+process will continue iterated. The result of all projects finally is
+the prediction data and from that, we can conclude which one will be the
+best model to deal with our challenge.
+\end{quote}
+
+\hypertarget{preprocess-data}{%
+\paragraph{\texorpdfstring{\textbf{3.2.2. Preprocess
+Data}}{3.2.2. Preprocess Data}}\label{preprocess-data}}
+
+\begin{quote}
+When working on this project, we chose the reflectance data as the input
+for our regression model. Our objective is to match the reflectance
+feature from each .sed file, which is integrated with the Replicate and
+Sub-Replicate specified in the DATA\_MUA1\_2022.csv file. Before any
+preprocessing, each .sed file contains a remarkable number of 2150 rows
+of Reflectance data. What we have to do is transfer these data rows from
+each sed file into separate feature columns. Each of these feature
+columns represents data in a different Wvl, Rad. (ref), and Rad.
+(Target). The actual targets we aim to predict, are named P conc.
+(mg/kg), K conc. (mg/kg), and Chlorophyll-a are extracted from the
+DATA\_MUA1\_2022.csv file, it adds three different actual outputs so
+that we end up with an impressive total number of 2150 feature columns.
+After the preprocessing part, our dataset in total has 2153 columns.
+\end{quote}
+
+\hypertarget{tools-library}{%
+\subsubsection{\texorpdfstring{\textbf{3.3. Tools \&
+Library}}{3.3. Tools \& Library}}\label{tools-library}}
+
+\begin{quote}
+In this project, I was using Google Colab to run most of the parts and
+to apply models in machine learning. Moreover, I also used other
+different libraries for this work:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Scikit-learn: Scikitlearn is an open-source machine learning library
+  for Python. It offers several tools for various machine learning tasks
+  including classification, regression, clustering, dimensional
+  reduction, model selection, and data preprocessing.
+  \end{quote}
+\item
+  \begin{quote}
+  Optuna: This is an open-source hyperparameter optimization for machine
+  learning models, which helps in finding the best hyperparameters,
+  making it easier to improve performance and accuracy. Optuna contains
+  various optimization algorithms to search for the optimal
+  hyperparameter in a defined space.
+  \end{quote}
+\item
+  \begin{quote}
+  XGBoost, CatBoost, LGBM: different gradient boosting algorithms to
+  deal with categorical features. Using these boosting algorithms
+  increases performance, speed, and efficiency, reducing overfitting
+  with large-scale datasets.
+  \end{quote}
+\item
+  \begin{quote}
+  Numpy, Matplotlib: used for scientific computing and visualization.
+  Numpy is used for numerical computing and Matplotlib is a tool for
+  creating data visualization.
+  \end{quote}
+\end{itemize}
+
+\hypertarget{model-configuration-and-training}{%
+\subsubsection{\texorpdfstring{\textbf{3.4. Model Configuration and
+Training}}{3.4. Model Configuration and Training}}\label{model-configuration-and-training}}
+
+\hypertarget{machine-learning-1}{%
+\paragraph{\texorpdfstring{\textbf{3.4.1. Machine
+Learning}}{3.4.1. Machine Learning}}\label{machine-learning-1}}
+
+\begin{quote}
+\textbf{PCA}
+
+Our dataset in this project is pretty large and contains a high number
+of dimensions, so we apply PCA to reduce the dimension and increase the
+model's efficiency. To find the best number of components that will be
+well-suited to the data, we use the result of the explained variance and
+the cumulative variance \textsuperscript{(15)} The figure below shows
+the information on the explained variance of the dataset.
+
+\includegraphics[width=4.85941in,height=3.32977in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image2.png}
+\end{quote}
+
+\hypertarget{figure-11---the-number-of-components-needed-to-explain-variance}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 11} - The number of
+components needed to explain
+variance}{Figure 11 - The number of components needed to explain variance}}\label{figure-11---the-number-of-components-needed-to-explain-variance}}
+
+\begin{quote}
+As we can see in the figure, to get more than 99\% of the variance
+explained, 1 component is enough. So our choice is 1 component of PCA.
+However in this project, to have more information and more statistical
+numbers for comparison, we also apply PCA with 3, 5, and 7 components
+for machine learning models.
+
+\textbf{Hyperparameter Optimization}
+
+Hyperparameter Optimization\textsuperscript{(17)} in Machine learning is
+the tool to select the best parameters for the learning algorithm. These
+hyperparameters find the values that can improve the efficiency of model
+performance. The main idea is to tune parameters to ensure that the
+model can handle data patterns and minimize a predefined loss function.
+Cross-validation is commonly used to estimate performance and choose the
+hyperparameter values that maximize it. There are several ways to
+optimize hyperparameters such as Grid Search, Random Search, etc. but in
+this project, we mainly focus on the traditional one, Grid Search. Grid
+Search is working when specifying a range of parameter values and
+testing them to see which will work best. This process requires
+performance metrics like cross-validation to guide the choice. However,
+when dealing with parameters that can take on real or unbounded values,
+we may need to set boundaries and discrete values before conducting the
+grid search. Grid Search is not such a great choice when working with
+high dimensional parameters space. So to work with XGBoost, AdaBoost,
+CatBoost, and LightGBM, we choose Optuna, which is an automatic
+hyperparameter optimization framework, as a backup plan.
+Optuna\textsuperscript{(16)} runs based on the define-by-run approach,
+which will bring flexibility when working with high-dimensional spaces
+for hyperparameters.
+
+\textbf{Architecture of Machine Learning Model}
+
+\includegraphics[width=5.75397in,height=2.24073in]{vertopal_f239f640fefe43bb8bc0698cafd57825/media/image6.png}
+\end{quote}
+
+\hypertarget{figure-12---illustration-of-our-machine-learning-workflow}{%
+\subparagraph{\texorpdfstring{\textbf{Figure 12} - Illustration of our
+machine learning
+workflow}{Figure 12 - Illustration of our machine learning workflow}}\label{figure-12---illustration-of-our-machine-learning-workflow}}
+
+\begin{quote}
+The dataset from the beginning have 260 .sed file in a folder called
+Spectral reflectance measurement then after preprocessing, eliminating
+all the null data, and standardizing, we will have the input dataset of
+the machine learning models. There are 80\% of training and the rest
+20\% is for testing. While working with hyperparameter tuning, we chose
+a cross-validation of 5 to find the hyperparameter that was well-suited.
+\end{quote}
+
+\hypertarget{model-evaluation}{%
+\subsubsection{\texorpdfstring{\textbf{3.5 Model
+Evaluation}}{3.5 Model Evaluation}}\label{model-evaluation}}
+
+\hypertarget{mean-squared-error-mse}{%
+\paragraph{\texorpdfstring{\textbf{3.5.1. Mean Squared Error
+(MSE)}}{3.5.1. Mean Squared Error (MSE)}}\label{mean-squared-error-mse}}
+
+\begin{quote}
+MSE quantifies the average squared difference between estimated values
+and actual values. In machine learning, it is one of the popular metrics
+when evaluating the quality of predictors or estimators. MSE is a
+non-negative value increasing as errors grow in the model. It considers
+both variance (how wide estimates vary across data samples) and bias
+(how far the average between estimates and true value). For an unbiased
+estimator, MSE equals the variance of the estimator. MSE can be given as
+the following equation:
+
+\(MSE = \frac{1}{n}({\ Y}_{i} - {\widehat{Y}}_{i}\ )\)\textbf{\textsuperscript{2}}
+
+where:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \(Y_{i}\): the i\_th observed value,
+  \end{quote}
+\item
+  \begin{quote}
+  \({\widehat{Y}}_{i}\): the corresponding predicted value,
+  \end{quote}
+\item
+  \begin{quote}
+  \(n\) = the number of observations.
+  \end{quote}
+\end{itemize}
+
+\hypertarget{r-square}{%
+\paragraph{\texorpdfstring{\textbf{3.5.2. R
+square}}{3.5.2. R square}}\label{r-square}}
+
+\begin{quote}
+R squared or \(R^{2}\) (coefficient of determination) is one of the
+metrics to understand how the output values (variance of a dependent
+variable) are explained by an independent variable. The value ranges
+from 0 to 1 and can be negative if the model performs worse than the
+average fit. An \(R^{2}\) above 0.7 can be signified as a strong
+correlation, while below 0.4 signified a weaker one.
+
+\(R^{2} = 1 - \frac{{SS}_{Regression}}{{SS}_{Total}}\)
+
+where:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \({SS}_{Regression}\) : the sum of squares due to regression,
+  \end{quote}
+\item
+  \begin{quote}
+  \({SS}_{Total}\) : the total sum of squares.
+  \end{quote}
+\end{itemize}
+
+\hypertarget{mape}{%
+\paragraph{\texorpdfstring{\textbf{3.5.3.
+MAPE}}{3.5.3. MAPE}}\label{mape}}
+
+\begin{quote}
+Mean Absolute Percentage Error (MAPE) is a metric for evaluating the
+accuracy of predicting methods, especially when we are working with
+large and nonzero dataset values. It calculates the percentage error
+between predicted and actual values. A MAPE below 5\% is a highly
+accurate prediction, while a MAPE between 10\% and 25\% is acceptable.
+But when it exceeds 25\%, it means that the results come out have very
+low accuracy, equivalent to an unacceptable prediction.
+
+\(MAPE = \frac{1}{n}\left| \frac{A_{t} - F_{t}}{A_{t}} \right|\)
+
+where:
+\end{quote}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \(n\) : sample size,
+  \end{quote}
+\item
+  \begin{quote}
+  \(A_{t}\): the actual data value,
+  \end{quote}
+\item
+  \begin{quote}
+  \(F_{t}\): the forecasted data value.
+  \end{quote}
+\end{itemize}
+
+\hypertarget{result-and-discussion}{%
+\subsection{\texorpdfstring{\textbf{4. Result and
+Discussion}}{4. Result and Discussion}}\label{result-and-discussion}}
+
+\hypertarget{chlorophyll-model-prediction-and-comparision}{%
+\subsubsection{\texorpdfstring{\textbf{4.1. Chlorophyll Model Prediction
+and
+Comparision}}{4.1. Chlorophyll Model Prediction and Comparision}}\label{chlorophyll-model-prediction-and-comparision}}
+
+\textbf{Table 1} - Comparison of Learning Models Performance in
+Chlorophyll Prediction
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2205}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1149}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1211}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1366}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1335}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1196}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1537}}@{}}
+\toprule()
+\multirow{2}{*}{\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.3727} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+Without PCA
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.4068} + 4\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (1 component)
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.84
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.63\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.64
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.57\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.83
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.63\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+11.53
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.69\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+13.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.24
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+7.48\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.41
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.27\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+11.10
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.66\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.60
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.65\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.83
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.63\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.41
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.57\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.72
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.58\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.23
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.42\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+19.29
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.82
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+8.49\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.71
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.57\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.97
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.42\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+12.76
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.21
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+7.30\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.83
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.63\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.64
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.57\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.83
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.63\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+11.10
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.52\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+12.19
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.15
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+7.19\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{XGBoost}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{8.62}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.15}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{5.87\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{8.76}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.14}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{6.10\%}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.08
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.23\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.73
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.42\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.28\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.42\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\textbf{Table 2} - Comparison of Learning Models Performance in
+Chlorophyll Prediction with 3, 5, 7 PCA Components
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1947}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0919}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0794}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0919}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0748}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0810}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0919}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0950}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0903}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1090}}@{}}
+\toprule()
+\multirow{2}{*}{\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2632} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (3 components)
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2477} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (5 components)
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2944} + 4\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (7 component)
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.93
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.34\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.71
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.30\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{9.85}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.03}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{6.29\%}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.48\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.45
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.57\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.45
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.57\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.45
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.57\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.29
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.53\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.67
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.32\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.38
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.41\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.14
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.49\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.95
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.48\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.87
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.44\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.38\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.24
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.42\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.24
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.42\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.24
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.42\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.44\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.44\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.43\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.78
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.66\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.84
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.74\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.62
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.64\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.41\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.41\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.41\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.14
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.49\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.95
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.48\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.44\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.33
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.63\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{9.55}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.06}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{6.28\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.46\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+XGBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{9.71}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.04}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{6.35\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.78
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.35\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.11
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.41\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.99
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.43\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.43\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+9.93
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.37\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.36\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.13
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.46\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+10.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+6.36\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+The Chlorophyll performance with the dataset basically is strong with a
+quite low result in MAPE of less than 7\% for most of the models, some
+have higher MAPE result, especially after applying 1 PCA component.
+Among the models, the XGBoost model without applying PCA seems to be the
+top performer (with an impressive score of 8.62 of MSE, the highest
+R\textsuperscript{2} score, and a MAPE of 5.87\% which is also the best
+one). Even though 1, 3, and 5 components of PCA, XGBoost still performs
+the best result CatBoost without applying PCA also presents a good
+result ( with 0.08 in R\textsuperscript{2} score ). With this result, we
+can conclude that the boosting algorithms are the most well-suited to
+the dataset. For the machine learning algorithm, there is nothing better
+than the result of Random Forest without PCA when it has 6.27\% in MAPE,
+9.41 in MSE and the R\textsuperscript{2} score is 0.07 which is also a
+good score. When taking a look at the higher number of PCA components,
+we can see that the result seems to be better in some models, especially
+with AdaBoosting when the R\textsuperscript{2} score increases
+impressively (from -0.15 to 0.01 in R\textsuperscript{2} score ) through
+each higher stage of PCA. The results in MAPE and MSE are more stable
+than with the lower number of components which is around 10 in MSE and
+around 6.5 in MSE. If choosing one best model for each 3, 5, and 7 PCA
+components, the greatest in order are XGBoost, AdaBoost, and Linear
+Regression, among them, Linear Regression seems to have the overall
+results pretty well. The worst performance is SVR after applying 1 PCA
+component's results (with -0.82 in R\textsuperscript{2} score, the
+highest MSE 19.29, and the highest MAPE 8.49\%). After applying PCA the
+results are much better but still not so great. The other bad
+performance is the Decision Tree after applying 1 component of PCA.
+
+Overall Chlorophyll seems to have the best performance for machine
+learning models because of the best result when compared with P and K
+concentrations.
+
+\hypertarget{p-model-prediction-and-comparison}{%
+\subsubsection{\texorpdfstring{\textbf{4.2. P Model Prediction and
+Comparison}}{4.2. P Model Prediction and Comparison}}\label{p-model-prediction-and-comparison}}
+
+\textbf{Table 3} - Comparison of Learning Models Performance in P
+Concentration Prediction
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2053}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1571}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1104}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1291}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1462}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1104}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1415}}@{}}
+\toprule()
+\multirow{2}{*}{\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.3966} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+Without PCA
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.3981} + 4\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (1 component)
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+600400.27
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.85\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+590452.22
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.61\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+809576.62
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.79\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+595473.73
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.63\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+798576.62
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.57\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+582468.28
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.58\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+673434.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.11
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18,71\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+652626.33
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.39\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+779860.59
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.29\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+590451.83
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.61\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+805652.41
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+21.52\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+590618.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.60\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+661599.95
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.24\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+661215.46
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.62\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+591150.94
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.56\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+591921.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.58\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+615169.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.94\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+580239.58
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.52\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+627916.94
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.33
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.21\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+590653.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.59\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+831396.92
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+22.05\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+590452.22
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.61\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+793464.37
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+23.31\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+563522.39
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.32\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{XGBoost}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+562302.08
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.10\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{523516.92}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.14}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{16.83\%}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+563728.23
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.44\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+578611.94
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.67\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+627958.64
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.21\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+627958.64
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.21\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\textbf{Table 4} - Comparison of Learning Models Performance in P
+Concentration Prediction with 3, 5, 7 PCA Components
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1757}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1120}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0731}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0918}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1120}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0700}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0902}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1104}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0700}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0949}}@{}}
+\toprule()
+\multirow{2}{*}{\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2768} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (3 components)
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2722} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (5 components)
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2753} + 4\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (7 component)
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+590118.51
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.64\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+602786.91
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.58\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+605368.62
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.66\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+607261.99
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.75\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+606748.22
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.61\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+574846.81
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{17.05\%}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{582468.28}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{17.58\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+642453.51
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.60\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+642453.51
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.60\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+661956.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.49\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+685801.38
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.13
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.53\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+601722.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.72\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+607261.99
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.75\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+622814.65
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.81\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+585243.96
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.13\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+607261.98
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.75\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+614590.82
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.72\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+581882.20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.17\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+652209.79
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.58\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+636115.22
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.94\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+607906.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.58\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+592322.54
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.58\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{591923.27}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.03}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{17.57\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+591301.76
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.56\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+630209.33
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.32\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+644217.55
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.41\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{560875.99}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.08}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.39\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+607261.99
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.76\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+622582.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.81\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+585026.27
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.13\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+607261.99
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.75\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+622791.61
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.81\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+585244.72
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.13\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+653114.10
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.07}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.58\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+647898.54
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.49\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+606994.96
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18,10\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+XGBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+593746.98
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.69\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+607394.79
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.84\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+599482.31
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.76\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+632922.32
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.32\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+613780.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.04\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+577259.24
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+17.47\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+627958.64
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.21\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+627958.64
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.21\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+627958.64
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+18.21\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+Now moving to the performance of P concentration. Generally, MAPE is
+quite good (\textasciitilde20\%), it seems worse than Chlorophyll's
+performance but still acceptable. The MSE and the R\textsuperscript{2}
+score are unfortunately high, some of the R\textsuperscript{2} scores
+are very low which cannot beated. Take a look at the models, the results
+between models are not so different, the changes can be clearly seen
+before and after applying PCA. We can clearly see that XGBoost with 1
+PCA component has the best performance with an impressive
+R\textsuperscript{2} score of 0.14 and the lowest MSE and MAPE. The MSE
+and MAPE in 3, 5, and 7 PCA components do not change much (around 600000
+for MSE and around 18\% for MAPE) which can be concluded that they have
+a stable outcome and don't differ much from the lower component. In
+order of 3, 5, and 7 PCA components, we can pick out some great results
+which are the MSE and MAPE of 3 components and an impressive
+R\textsuperscript{2} score belonging to AdaBoost, the results of
+Bayesian Ridge, and with 7 components we have great values of MSE and
+R\textsuperscript{2} from Gradient Boosting and the MAPE result of Lasso
+Regression. The performance of Gradient Boosting with 7 PCA components
+surprisingly have low results in MSE and high result in
+R\textsuperscript{2} , and it even has better result when compared with
+1 PCA component. Even though the overall performance is great there are
+still some not-great results with a little high MAPE (\textgreater20\%)
+without applying PCA, such as Lasso, Ridge, AdaBoost, ElasticNet, and
+Lars, but Lars seems to have the worst performance when compared in
+total (with highest MSE and a not to beat R\textsuperscript{2} score,
+and the MAPE is also high but not as high as AdaBoost's MAPE).
+
+\hypertarget{k-model-prediction-and-comparison}{%
+\subsubsection{\texorpdfstring{\textbf{4.3. K Model Prediction and
+Comparison}}{4.3. K Model Prediction and Comparison}}\label{k-model-prediction-and-comparison}}
+
+\textbf{Table 5} - Comparison of Learning Models Performance in K
+Concentration Prediction
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1916}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1526}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1168}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1355}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1526}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1121}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1386}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.4050} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+Without PCA
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.4034} + 4\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (1 component)
+\end{minipage}} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107236125.48
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.88\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103348457.47
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.16\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+127745308.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+36.57\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103388230.49
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.22\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+134777212.87
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.18
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+38.00\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+98501105.28
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.34\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+95390644.85
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.10
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+25.69\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107740656.17
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+28.27\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+127064172.96
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.11
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+35.70\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103348496.81
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.16\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+119845469.73
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+35.21\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103356522.65
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.19\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106589283.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.52\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+102270252.63
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.37\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107221952.93
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.88\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103666880.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.35\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+96605006.46
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.09
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.19\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+104890891.46
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.73\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107233510.81
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.88\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103348515.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.16\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+126196026.94
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.11
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+36.11\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103348457.47
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.16\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+148137256.36
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.30
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+38.73\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+99389152.40
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.78\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+XGBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{88801471.25}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.16}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{23.80\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{96620729.06}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.09}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{26.80\%}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+92969278.99
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.12
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+25.14\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+100335635.61
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.78\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+104259020.48
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.89\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105869897.76
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.70\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\textbf{Table 6} - Comparison of Learning Models Performance in K
+Concentration Prediction with 3, 5, 7 PCA Components
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1737}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1174}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0657}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0923}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1174}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0657}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0923}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1158}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0673}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0923}}@{}}
+\toprule()
+\multirow{2}{*}{\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2754} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (3 components)
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2754} + 4\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (5 components)
+\end{minipage}} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2754} + 4\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+PCA (7 component)
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MSE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R\textsuperscript{2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+MAPE
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106906837.92
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.90\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107373204.57
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.97\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106619178.77
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.84\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103388230.49
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.22\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103388230.49
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.22\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103388230.49
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.22\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+98501105.81
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.34\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+98501105.81
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.34\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+111934470.51
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+28.53\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+92032913.25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.13
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.23\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1070561021.26
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.54\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105495312.61
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.98\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105305752.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.74\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106784938.14
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.62\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+101153905.69
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.97\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103684573.28
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.26\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103690201.94
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.24\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103522484.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.22\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106627352.45
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.55\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106614398.08
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.54\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106608902.16
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.54\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107221960.43
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.88\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107221946.63
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.88\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107221946.62
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.88\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+109582953.87
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+28.18\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+99717999.88
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.52\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+101163563.43
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.34\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103452724.71
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.18\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103450924.98
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.17\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+103408383.92
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.02
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.17\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+105308653.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.00
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.74\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106815493.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.63\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+101035106.45
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.96\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+106373421.48
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.56\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+98205464.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.07
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+26.76\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+111498145.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+-0.06
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+29.01\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{XGBoost}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{83106773.15}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.21}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{23.37\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{82847194.33}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.22}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{23.17\%}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{82840259.19}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{0.22}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{23.72\%}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+100473439.50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+27.00\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+85922695.34
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.19
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+23.73\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+83251747.41
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.21
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+23.66\%
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+107236125.48
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+25.35\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+91714224.21
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.13
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+25.69\%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+86069526.82
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.19
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+25.19\%
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+Moving on with the K prediction, in general, the MAPE is not so good,
+especially when compared with Chlorophyll and P. The amount in MAPE is
+quite high but still not too high (\textless40\%) though MSE is not as
+good as we expect. The R\textsuperscript{2} also has the same problem
+with Chlorophyll and P is that some of them cannot beat the
+R\textsuperscript{2} score. This is maybe because the quality of our
+dataset doesn't have a good measure. Overall, to give a comment on these
+results, we could say that almost every R\textsuperscript{2} score when
+applying 1 PCA component, beats the R\textsuperscript{2}, and most of
+the models' results seem to be the best when compared with the same one
+in other PCA components or without applying PCA. We can see that XGBoost
+is the best model even without applying PCA, applying PCA with 1
+component, and also with higher components. Among them, the XGBoost with
+5 PCA components has the best amount (0.22 in R\textsuperscript{2}
+score, 23.17\% in MAPE, and 82847194.33 in MSE). Another model that has
+very good performance is CatBoost with 7 components. On the other hand,
+AdaBoost without PCA became the worst model when having such high
+results in MSE and MAPE, and the lowest R\textsuperscript{2}
+(148137256.36 in MSE, -0.30 in R\textsuperscript{2} score and
+surprisingly high MAPE 38.73\%). We can conclude that with K
+concentration, applying PCA improves the overall performance of all the
+models, making the outcomes more stable and better.
+
+\hypertarget{conclusion-and-future-work}{%
+\subsection{\texorpdfstring{\textbf{5. Conclusion and Future Work}
+}{5. Conclusion and Future Work }}\label{conclusion-and-future-work}}
+
+\hypertarget{conclusion}{%
+\subsubsection{\texorpdfstring{\textbf{5.1.
+Conclusion}}{5.1. Conclusion}}\label{conclusion}}
+
+\begin{quote}
+In this project, we work with the prediction of nutrient regression,
+with such different kinds of concentration, chlorophyll content, P
+concentration, and K concentration. From the above comparison, we can
+conclude that the best result is the prediction of the chlorophyll
+content. This is because the dataset of Chlorophyll is pretty well which
+can be concluded that the wavelength when collecting data is good. The P
+and K concentration on the other hand is not as great as with
+Chlorophyll, especially the worst one among the fields is the K
+concentration because of its poor performance in MAPE and MSE. Luckily
+the R\textsuperscript{2} score was not the greatest but it is still not
+so bad when compared to P concentration and Chlorophyll content. The
+possible causes for this bad performance in P and K may be because of
+the imbalance in measures P and K concentrations, or an insufficient
+amount of training data available for learning models. When comparing
+between applying or without applying PCA, and comparing between applying
+1 component of PCA or higher components, we can barely conclude that PCA
+with 1 component can be a good choice to have better results. Applying
+higher components like 3, 5, or 7 is also good, but some of them show a
+decrease in prediction quality so choosing 1 component is better if
+considered in full view. The only thing that makes the higher components
+great is their stability through each stage of PCA, which is not so much
+different from the result with only one component. To choose which is
+the greatest model that can work best with most of the concentrations is
+XGBoost when it is outstanding in all of the fields (P, K, and
+Chlorophyll all have XGBoost as the best performance).
+
+In the modern age, the integration of advanced technologies into
+agriculture has gained a great amount of popularity. Plant health is
+important in agriculture, and these technological advancements provide
+farmers with huge support. Farmers may optimize their operations by
+using the potential of these technologies, resulting in savings in both
+time and effort.
+\end{quote}
+
+\hypertarget{future-work}{%
+\subsubsection{\texorpdfstring{\textbf{5.2. Future
+Work}}{5.2. Future Work}}\label{future-work}}
+
+\begin{quote}
+In future work, we would like to improve the quality of the dataset and
+increase the sample in the dataset. Because the dataset is in one
+season, just having 3 kinds of concentrations is not enough for us to
+train a good model. Besides, studying and applying more models and
+different kinds of learning algorithms such as the models of Deep
+Learning may work and get better results than what we got here. What we
+want to work with more is to work with other kinds of objects such as
+vegetable leaves and also find the best model among a large number of
+concentrations. We also want to work with not just the PCA but other
+techniques to deal with the high dimensional data issues
+\end{quote}
+
+\hypertarget{reference}{%
+\subsection{\texorpdfstring{\textbf{Reference}}{Reference}}\label{reference}}
+
+\begin{quote}
+(1) Zhu, Jiyou and He, Weijun and Yao, Jiangming and Yu, Qiang and Xu,
+Chengyang and Huang, Huaguo and Jandug, Catherine Mhae. 2020. ``(PDF)
+Spectral Reflectance Characteristics and Chlorophyll Content Estimation
+Model of Quercus aquifolioides Leaves at Different Altitudes in Sejila
+Mountain.''
+
+(2) Yu, Peigen \& Low, Mei \& Zhou, Weibiao. 2017. ``Development of a
+partial least squares-artificial neural network (PLS-ANN) hybrid model
+for the prediction of consumer liking scores of ready-to-drink green tea
+beverages.'' 103. 10.1016/j.foodres.2017.10.015.
+
+(3) ``Chlorophyll \textbar{} Definition, Function, \& Facts.'' 2023.
+Britannica.
+
+(4) ``Difference Between Chlorophyll A and Chlorophyl B -
+BYJU\textquotesingle S.'' 2021. BYJU\textquotesingle S.
+
+(5) ``Spectral Reflectance -- The Project Definition.'' 2015. The
+Project Definition.
+
+(6) ``Spectral Reflectance Curve.'' 2020. Energy Interactions
+(continued\ldots).
+
+(7) ``What is Regression Analysis?'' n.d. TIBCO Software.
+
+(8) Jaadi, Zakaria. n.d. ``Principal Component Analysis (PCA)
+Explained.'' Built In.
+
+(9) Ashok, Prashanth. n.d. ``Ridge Regression Definition \& Examples
+\textbar{} What is Ridge Regression?'' Great Learning. Accessed
+September 19, 2023.
+https://www.mygreatlearning.com/blog/what-is-ridge-regression/.
+
+(10) ``Decision Tree Algorithm in Machine Learning.'' n.d. Javatpoint.
+Accessed September 19, 2023.
+
+(11) ``What is a Random Forest?'' n.d. TIBCO Software. Accessed
+September 19, 2023.
+
+(12) Panthagani, Phanindra. n.d. ``The Gifted Regressor: Lasso Lars.
+When it comes to regression, everyone\ldots{} \textbar{} by Phanindra
+Panthagani.'' Medium. Accessed September 19, 2023.
+
+(13) Jain, Sandeep. 2023. ``CatBoost in Machine Learning.''
+GeeksforGeeks.
+
+(14) Mandot, Pushkar. 2017. ``What is LightGBM, How to implement it? How
+to fine tune the parameters?'' Medium.
+
+(15) Kumar, Ajitesh. 2023. ``PCA Explained Variance Concepts with Python
+Example.'' Analytics Yogi.
+
+(16) Chakrabarti, Sion. 2021. ``Optimize your optimizations using
+Optuna.'' Analytics
+Vidhya.https://www.analyticsvidhya.com/blog/2021/09/optimize-your-optimizations-using-optuna/.
+
+(17) ``A Comprehensive Guide on Hyperparameter Tuning and its
+Techniques.'' 2022. Analytics Vidhya.
+https://www.analyticsvidhya.com/blog/2022/02/a-comprehensive-guide-on-hyperparameter-tuning-and-its-techniques/.
+
+(18) Joseph, Ajith. n.d. ``Fig. 4 Spectral Reflectance Curves for
+vegetation, soil and water...''
+
+(19) ``Why phosphorus is important.'' NSW Department of Primary
+Industries.
+
+(20). 2014. ``Fertilizer 101: The Big 3 - Nitrogen, Phosphorus and
+Potassium.'' The Fertilizer Institute.
+\end{quote}
+
+\hypertarget{appendix-a}{%
+\subsection{\texorpdfstring{\textbf{Appendix
+A}}{Appendix A}}\label{appendix-a}}
+
+\hypertarget{tables-of-hyperparameter-for-each-machine-learning-models}{%
+\subsection{\texorpdfstring{\textbf{Tables of Hyperparameter for each
+Machine learning
+models}}{Tables of Hyperparameter for each Machine learning models}}\label{tables-of-hyperparameter-for-each-machine-learning-models}}
+
+\textbf{Table A.1} - Table of good performance' hyperparameters for each
+models of Chlorophyll
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3507}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3993}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Default
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hyperparmeters
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+fit\_intercept: True, n\_jobs: None, positive: False
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+fit\_intercept: True, n\_jobs: 5, positive: True
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, fit\_intercept: True, max\_iter: 1000
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 34.3, fit\_intercept: True, max\_iter: 40
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_leaf\_nodes: None, min\_samples\_split: 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_leaf\_nodes: 2, min\_samples\_split: 6
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: None, max\_features: 1.0, min\_samples\_leaf: 1,
+min\_sample\_split: 2, n\_estimators: 100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 10, max\_features: `auto', min\_samples\_leaf: 20,
+min\_sample\_split: 8, n\_estimators: 10
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge (PCA 5 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1, fit\_intercept: True, solver: `auto'
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1, fit\_intercept: True, solver:
+\textquotesingle saga\textquotesingle{}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, l1\_ratio: 0.5, max\_iter: 1000
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 100, l1\_ratio: 0.4, max\_iter: 1
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C: 1,0, coef0: 0.0, epsilon: 0.1, gamma: scale, kernel: `rbf'
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C: 10, coef0: 5.0, epsilon: 0.01, vn gamma: `scale', kernel: `sigmoid'
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Alpha\_1: 1e-06, alpha\_2: 1e-06, lambda\_1: 1e-06, lambda\_2: 1e-06,
+n\_inter: int
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha\_1: 1e-06, alpha\_2: 0.0001, lambda\_1: 0.1, lambda\_2: 1e-09,
+n\_inter: 100
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.1, max\_depth: 3, n\_estimators: 100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.01, max\_depth: 3, n\_estimators: 100
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, eps: np.finfo(float).eps, fit\_intercept: True, max\_iter:
+500, verbose: False
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 0.1, eps: 200.5, fit\_intercept: True, max\_iter: 10, verbose:
+True
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars (PCA 5 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+eps:, fit\_intercept: True, n\_nonzero\_coefs:
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+eps: 0.1, fit\_intercept: True, n\_nonzero\_coefs: 10
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost (PCA 5 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 1.0, n\_estimators: 50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.1, n\_estimators: 30
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+XGBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 6, learning\_rate:, n\_estimators: , min\_child\_weight: 1,
+gamma: 0, subsample: 1, colsample\_bytree: 0.5, reg\_alpha: 0,
+reg\_lambda: 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 4, learning\_rate: 0.03, n\_estimators: 436,
+min\_child\_weight: 9, gamma: 0.08, subsample: 0.43, colsample\_bytree:
+0.06, reg\_alpha: 0.0009, reg\_lambda: 0.05
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Iterations: 500, depth: , learning\_rate:
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+iterations: 107, depth: 10, learning\_rate: 0.09
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM (PCA 1 component)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+reg\_alpha: 0.0, reg\_lambda: 0.0, colsample\_bytree: 1.0, subsample:
+1.0, learning\_rate: 0.1, min\_child\_samples: 20,
+min\_data\_per\_groups: 20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+reg\_alpha: 0.006, reg\_lambda: 0.04, colsample\_bytree: 0.5, subsample:
+0.4, learning\_rate: 0.02, min\_child\_samples: 78,
+min\_data\_per\_groups: 41
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\textbf{Table A.2} - Table of good performance' hyperparameters for each
+models of P
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3507}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3993}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Default
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hyperparmeters
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+fit\_intercept: True, n\_jobs: None, positive: False
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+fit\_intercept: True, n\_jobs: 5, positive: True
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, fit\_intercept: True, max\_iter: 1000
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 104.76, fit\_intercept: True, max\_iter: 40
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_leaf\_nodes: None, min\_samples\_split: 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_leaf\_nodes: 2, min\_samples\_split: 6
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest (PCA 7 components
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: None, max\_features: 1.0, min\_samples\_leaf: 1,
+min\_sample\_split: 2, n\_estimators: 100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 10, max\_features: `auto', min\_samples\_leaf: 20,
+min\_sample\_split: 8, n\_estimators: 10
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1, fit\_intercept: True, solver: `auto'
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1, fit\_intercept: True, solver:
+\textquotesingle saga\textquotesingle{}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, l1\_ratio: 0.5, max\_iter: 1000
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 100, l1\_ratio: 0.4, max\_iter: 1
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C: 1,0, coef0: 0.0, epsilon: 0.1, gamma: scale, kernel: `rbf'
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C: 10, coef0: 5.0, epsilon: 0.01, gamma: `scale', kernel: `sigmoid'
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha\_1: 1e-06, alpha\_2: 1e-06, lambda\_1: 1e-06, lambda\_2: 1e-06,
+n\_inter: int
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha\_1: 1e-06, alpha\_2: 0.0001, lambda\_1: 0.1, lambda\_2: 1e-09,
+n\_inter: 100
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting (PCA 7 components
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.1, max\_depth: 3, n\_estimators: 100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.01, max\_depth: 3, n\_estimators: 100
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, eps: np.finfo(float).eps, fit\_intercept: True, max\_iter:
+500, verbose: False
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 0.1, eps: 200.5, fit\_intercept: True, max\_iter: 10, verbose:
+True
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars (PCA 5 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+eps:, fit\_intercept: True, n\_nonzero\_coefs:
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+eps: 0.1, fit\_intercept: True, n\_nonzero\_coefs: 10
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost (PCA 5 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 1.0, n\_estimators: 50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.1, n\_estimators: 30
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+XGBoost (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 6, min\_child\_weight: 1, gamma: 0, subsample: 1,
+colsample\_bytree: 0.5, reg\_alpha: 0, reg\_lambda: 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 6, learning\_rate:0.14, n\_estimators: 110,
+min\_child\_weight: 4, gamma: 3.04e-05, subsample: 0.43,
+colsample\_bytree: 0.20, reg\_alpha: 0.03, reg\_lambda: 0.002
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Iterations: 500, learning\_rate: 0.1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+iterations: 107, depth: 10, learning\_rate: 0.092
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+reg\_alpha: 0.0, reg\_lambda: 0.0, colsample\_bytree: 1.0, subsample:
+1.0, learning\_rate: 0.1, min\_child\_samples: 20,
+min\_data\_per\_groups: 20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+reg\_alpha: 7.85, reg\_lambda: 0.001, colsample\_bytree: 0.8, subsample:
+0.6, learning\_rate: 0.006, min\_child\_samples: 74,
+min\_data\_per\_groups: 62
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\textbf{Table A.3} - Table of good performance' hyperparameters for each
+models of K
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3507}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3993}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Models
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Default
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hyperparmeters
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Linear Regression (PCA 1 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+fit\_intercept: True, n\_jobs: None, positive: False
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+fit\_intercept: True, n\_jobs: 5, positive: True
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Regression (PCA 1 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, fit\_intercept: True, max\_iter: 1000
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 9111.62, fit\_intercept: True, max\_iter: 40
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Decision Tree (PCA 1 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_leaf\_nodes: None, min\_samples\_split: 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_leaf\_nodes: 2, min\_samples\_split: 2
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Random Forest (PCA 3 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: None, max\_features: 1.0, min\_samples\_leaf: 1,
+min\_sample\_split: 2, n\_estimators: 100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 9, max\_features: `sqrt', min\_samples\_leaf: 10,
+min\_sample\_split: 4, n\_estimators: 20
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Ridge (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1, fit\_intercept: True, solver: `auto'
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1, fit\_intercept: True, solver:
+\textquotesingle saga\textquotesingle{}
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+ElasticNet (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, l1\_ratio: 0.5, max\_iter: 1000
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 100, l1\_ratio: 0.0, max\_iter: 1
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+SVR (PCA 1 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C: 1,0, coef0: 0.0, epsilon: 0.1, gamma: scale, kernel: `rbf'
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C: 1, coef0: 1.5, epsilon: 0.1, gamma: `scale', kernel: `poly'
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Bayesian Ridge (PCA 1 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha\_1: 1e-06, alpha\_2: 1e-06, lambda\_1: 1e-06, lambda\_2: 1e-06,
+n\_inter: int
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha\_1: 0.001, alpha\_2: 1e-06, lambda\_1: 0.1, lambda\_2: 0.1,
+n\_inter: 100
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Gradient Boosting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.1, max\_depth: 3, n\_estimators: 100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.01, max\_depth: 3, n\_estimators: 100
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lasso Lars (PCA 1 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 1.0, eps: np.finfo(float).eps, fit\_intercept: True, max\_iter:
+500, verbose: False
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha: 0.1, eps: 200.5, fit\_intercept: True, max\_iter: 10, verbose:
+True
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Lars (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+eps:, fit\_intercept: True, n\_nonzero\_coefs:
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+eps: 0.1, fit\_intercept: True, n\_nonzero\_coefs: 10
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+AdaBoost (PCA 5 component)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 1.0, n\_estimators: 50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+learning\_rate: 0.1, n\_estimators: 30
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+XGBoost (PCA 5 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 6, learning\_rate:, n\_estimators: , min\_child\_weight: 1,
+gamma: 0, subsample: 1, colsample\_bytree: 0.5, reg\_alpha: 0,
+reg\_lambda: 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max\_depth: 4, learning\_rate: 0.032, n\_estimators: 436,
+min\_child\_weight: 9, gamma: 0.079, subsample: 0.43, colsample\_bytree:
+0.06, reg\_alpha: 0.0009, reg\_lambda: 0.053
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+CatBoost (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+iterations: 500, learning\_rate:
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+iterations: 404, depth: 5, learning\_rate: 0.057
+\end{minipage} \\
+\begin{minipage}[b]{\linewidth}\raggedright
+LGBM (PCA 7 components)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+reg\_alpha: 0.0, reg\_lambda: 0.0, colsample\_bytree: 1.0, subsample:
+1.0, learning\_rate: 0.1, min\_child\_samples: 20,
+min\_data\_per\_groups: 20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+reg\_alpha: 0.003, reg\_lambda: 0.77, colsample\_bytree: 0.4, subsample:
+0.7, learning\_rate: 0.006, min\_child\_samples: 3,
+min\_data\_per\_groups: 100
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\end{document}

@@ -1,0 +1,182 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{xcolor}
+\usepackage[a4paper,left=1in,right=0.75in,top=0.75in,bottom=0.75in]{geometry}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{titling}
+\usepackage{longtable,booktabs,array}
+\usepackage{multirow}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+
+% paragraph indent
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.25}
+
+% reference list
+\usepackage[
+backend=biber,
+style=alphabetic-verb,
+sorting=ynt
+]{biblatex}
+\addbibresource{reference.bib}
+
+% algorithm and procedure
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\newcommand\algorithmicprocedure{\textbf{procedure}}
+\newcommand{\algorithmicendprocedure}{\algorithmicend\ \algorithmicprocedure}
+\makeatletter
+\newcommand\PROCEDURE[3][default]{%
+  \ALC@it
+  \algorithmicprocedure\ \textsc{#2}(#3)%
+  \ALC@com{#1}%
+  \begin{ALC@prc}%
+}
+\newcommand\ENDPROCEDURE{%
+  \end{ALC@prc}%
+  \ifthenelse{\boolean{ALC@noend}}{}{%
+    \ALC@it\algorithmicendprocedure
+  }%
+}
+\newenvironment{ALC@prc}{\begin{ALC@g}}{\end{ALC@g}}
+\makeatother
+
+\newcommand{\algorithmautorefname}{Algorithm}
+\graphicspath{{./image/}}
+
+\newcommand{\mynote}[2]{\fbox{\bfseries\sffamily\scriptsize{#1}} {\small\textsf{\emph{#2}}}}
+\newcommand{\tb}[1]{\textcolor{red}{\mynote{boris}{#1}}}
+\newcommand{\tudinh}[1]{\textcolor{orange}{\mynote{TU}{#1}}}
+\newcommand{\son}[1]{\textcolor{blue}{\mynote{DX}{#1}}}
+\newcommand{\hieplnc}[1]{\textcolor{brown}{\mynote{hieplnc}{#1}}}
+
+\title{Regression methods for analysis of rice spectral reflectance data }
+\author{PHAM Phan Bach}
+\date{\today}
+
+\begin{document}
+
+%\maketitle
+\begin{titlepage}
+    \begin{tikzpicture}[remember picture,overlay,inner sep=0,outer sep=0]
+     \draw[black!70!black,line width=1.5pt] ([xshift=-1.5cm,yshift=-2cm]current page.north east) coordinate (A)--([xshift=2cm,yshift=-2cm]current page.north west) coordinate(B)--([xshift=2cm,yshift=2cm]current page.south west) coordinate (C)--([xshift=-1.5cm,yshift=2cm]current page.south east) coordinate(D)--cycle;
+
+   \end{tikzpicture}
+    \begin{center}
+    \MakeUppercase{\Large{{University of Science and Technology of Hanoi}}} \\ 
+    \MakeUppercase{\Large{\textbf{Master's degree}}} \\ [1cm]
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=.5\textwidth, height=\textheight, keepaspectratio]{logos/usth-logo.png}
+    \end{figure}
+            
+    \vspace {0.5cm}
+    \Large{Research and Development} \\
+    \MakeUppercase{\Huge{\textbf{Master thesis}}} \\ [1cm]
+    \Large{by} \\
+    \Large{\theauthor} \\
+    \Large{M21.ICT.002} \\
+    \Large{Information and Communication Technology} \\ [0.75cm]
+    \Large{Title:} \\
+    \huge{\textbf{Regression methods for analysis of \\ rice spectral reflectance data}} \\[0.75cm]
+    \Large{Supervisors: Dr. TRAN Giang Son \\Lab name: USTH's ICT lab} \\ [1.5cm]
+    
+    \Large{\textbf{Hanoi. Oct 2024}}
+    \end{center}
+\end{titlepage}
+
+% attestation
+\chapter*{Attestation}
+I hereby, \theauthor, certify that my thesis doesn’t contain plagiarism (copy/paste) from other sources.
+
+\vspace{5mm}
+\noindent%
+In case of plagiarism in my thesis, I know the consequences and I understand that my thesis won’t be evaluated. In this case, my M2 internship will be noted as "fail". 
+
+\vspace{1cm}
+\noindent%
+Sep, 10th, 2023 \\
+Signature 
+
+\vspace{2cm}
+\noindent%
+\theauthor
+
+% ack
+\chapter*{Acknowledgements}
+
+\noindent%
+My thesis would not be completed without the help of many people to whom I wish to express gratitude. 
+
+First and foremost, I would like to express my gratitude to my supervisor Dr. TRAN Giang Son, for orginating the opportunity for my internship in ICT lab. His constructive instruction and feedback during both before and throughout the internship is indispensable for the project completion
+
+\vspace{5mm}
+\noindent%
+In addition, I take this opportunity to especially thank Dr. NGHIEM Thu Phuong and MSc. LE Nhu Chu for their guidance and encouragement during my study time in ICTLab.
+
+\vspace{5mm}
+\noindent%
+Thanks should also go to all my friends and colleague in ICT lab for their helpful discussions and assistance. 
+
+\vspace{5mm}
+\noindent%
+Last but not least, I would also extend my deep appreciation to my family and friends for their continuous love, unwavering support throughout my life.
+
+
+\noindent%
+ \newline
+
+% toc
+\pagenumbering{gobble}
+
+\tableofcontents
+\clearpage
+\thispagestyle{empty}
+
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+\clearpage
+
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\clearpage
+
+% \chapter*{Abstract}
+% \addcontentsline{toc}{chapter}{Abstract}
+% \input{abstract}
+% \clearpage
+
+% count from starting of contents
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\chapter{Introduction} \label{chap:introduction}
+\input{introduction}
+\input{rw}
+
+\chapter{Material \& Methodology} \label{chap:methodology}
+\input{data}
+\input{background}
+\input{implementation}
+
+\chapter{Result \& Discussion} \label{chap:result}
+\input{evaluation}
+
+\chapter{Conclusion} \label{chap:conclusion}
+\input{conclusion}
+\input{fw}
+
+\printbibliography
+\end{document}

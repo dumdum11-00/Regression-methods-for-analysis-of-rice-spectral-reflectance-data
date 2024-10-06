@@ -1,0 +1,24 @@
+5/4:
+1. Pre process : Match data
+	problem: 
+		J23: no have P, L only  chloro
+		
+2. Poor laptop -> Request for server access 
+
+
+create log:
+	Date - method- metric -output
+	
+more method:
+
+ssh key
+
+
+
+survey min 5 related work
+
+define 1 main metric for evaluation
+
+survey 5 more work with best score above metric
+
+apply to npk 

@@ -1,0 +1,17 @@
+
+==============================================
+31/07/2024, 16:32:03
+Linear Regression
+PCA
+R square of Chlorophyll-a: -0.2625049088480682
+R square of P: 0.0149920057262799
+R square of K: 0.002662861565831953
+Mean squared error of Chlorophyll-a: 10.805917123497153
+Mean squared error of P: 674043.276957395
+Mean squared error of K: 105741747.79576774
+Mean absolute percentage error of Chlorophyll-a: 0.05980659281160151
+Mean absolute percentage error of P: 0.19745301442772584
+Mean absolute percentage error of K: 0.2976638862157406
+05/08/2024, 18:09:47
+Linear Regression
+
